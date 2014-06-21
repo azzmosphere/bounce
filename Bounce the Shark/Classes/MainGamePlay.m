@@ -20,6 +20,11 @@
     CCSprite      *_bg1;
     CCSprite      *_bg2;
     NSArray       *_bg;
+    
+    CCSprite      *_roof1;
+    CCSprite      *_roof2;
+    NSArray       *_roof;
+    
     CCPhysicsNode *_physicsWorld;
     
     SharkHero     *_shark;
@@ -60,7 +65,8 @@
     [self addChild:_bg2];
 
     _physicsWorld = [CCPhysicsNode node];
-    [self setFloor];
+    _floor = [self setFloor];
+    _roof  = [self setRoof];
     [self addChild:_physicsWorld];
 
     // Done in scene
@@ -68,7 +74,7 @@
     
     [_physicsWorld addChild: [_shark getSpriteSheet]];
     CGSize viewSize = [[CCDirector sharedDirector] viewSize];
-    _shark.position = ccp(viewSize.width * 0.2f, viewSize.height/2);
+    _shark.position = ccp(viewSize.width * 0.35f, viewSize.height/2);
     
     
     _physicsWorld.gravity = ccp(0,-50);
@@ -76,38 +82,99 @@
     return self;
 }
 
--(void) setFloor
+
+// These routines need to move into there own class that handles
+// Floor and adds the extra code for setting up physics.
+-(NSArray *) setFloor
 {
     _floor1 = [self createFloorTile:0.f];
     _floor2 = [self createFloorTile:_floor1.contentSize.width];
-    _floor = [NSArray arrayWithObjects:_floor1,_floor2, nil];
-    [_physicsWorld addChild:_floor1];
-    [_physicsWorld addChild:_floor2];
+    return [self setClamp:_floor1
+        withClamp2:_floor2
+         withArray:_floor];
 }
 
 -(CCSprite *) createFloorTile : (CGFloat) xpoint
 {
-    /* This should scale the floor correctly. */
-    CCSprite * tile = [CCSprite spriteWithImageNamed:@"oceanfloortile.png"];
+    CCSprite *tile = [self createClamp:@"oceanfloortile.png"
+                           withXpoint:ccp(xpoint,0.f)
+                      withHeightOffset:0.05f];
+    return tile;
+}
+
+// These routines need to move into there own class that handles
+// Roof and adds the extra code for setting up physics.
+-(NSArray *) setRoof
+{
+    _roof1 = [self createRoofTile:0.f];
+    _roof2 = [self createRoofTile:_roof1.contentSize.width];
+    return [self setClamp : _roof1
+        withClamp2 : _roof2
+         withArray : _roof];
+}
+
+-(CCSprite *) createRoofTile : (CGFloat) xpoint
+{
+    CGSize viewSize = [[CCDirector sharedDirector] viewSize];
+    CCSprite *tile = [self createClamp : @"roof.png"
+                            withXpoint : ccp(xpoint,viewSize.height)
+                      withHeightOffset : 1.0f];
+    return tile;
+}
+
+
+
+/*
+ *=============================================================================
+ * Create a floor or roof clamp (tile).  The offset is the height expressed
+ * in points from bottom left corner,  
+ *
+ * NOTE:
+ *    offset = 0 will cause it to have a offset at the bottom only (this is ok
+ *               ok for the roof.
+ *    offset = 1 will mean that the height is exactly the same as the content
+ *               (boundingBox) height.
+ *    any value between 0 to 1 will be the percentile used for the offset.
+ *=============================================================================
+ */
+-(CCSprite *) createClamp   : (NSString *) imageFile
+               withXpoint   : (CGPoint)    spritePosition
+           withHeightOffset : (CGFloat)    heightOffset
+{
+    CCSprite * tile = [CCSprite spriteWithImageNamed:imageFile];
     
-    [tile setPosition:ccp(xpoint,0)];
+    [tile setPosition:spritePosition];
     [tile setAnchorPoint:CGPointMake(0, 0)];
     
     tile.physicsBody = [CCPhysicsBody bodyWithRect: CGRectMake(
-                                                              CGPointZero.x,
-                                                              CGPointZero.y,
-                                                              tile.contentSize.width,
-                                                              tile.contentSize.height * 0.05)
+                                                               CGPointZero.x,
+                                                               CGPointZero.y,
+                                                               tile.contentSize.width,
+                                                               tile.contentSize.height * heightOffset)
                                       cornerRadius:0];
     tile.physicsBody.type = CCPhysicsBodyTypeStatic;
     
-    NSLog(@"Bounding body = %f x %f x %f x %f",
+    NSLog(@"Bounding body = %f x %f x %f x %f for '%@'",
           tile.boundingBox.origin.x,
           tile.boundingBox.origin.y,
           tile.boundingBox.size.width,
-          tile.boundingBox.size.height);
+          tile.boundingBox.size.height,
+          imageFile);
     
     return tile;
+}
+
+-(NSArray *) setClamp : (CCSprite *) clamp1
+      withClamp2 : (CCSprite *) clamp2
+       withArray : (NSArray *)  array
+{
+    array = [NSArray arrayWithObjects:clamp1,clamp2, nil];
+    [_physicsWorld addChild:clamp1];
+    [_physicsWorld addChild:clamp2];
+    
+    NSLog(@"%lu elements in clamp array", (unsigned long)[array count]);
+    
+    return array;
 }
 
 
@@ -115,7 +182,8 @@
 {    
     _physicsWorld.position = ccp(((_physicsWorld.position.x - (scrollSpeed *delta)) + 1), _physicsWorld.position.y);
     
-    [self updateScrollingImage: _floor];
+    [self updateScrollingImage: _floor  withDebugTitle : @"_floor"];
+    [self updateScrollingImage: _roof   withDebugTitle : @"_roof"];
     
     for (CCSprite *bg in _bg){
         [bg setPosition:CGPointMake(bg.position.x - 1, bg.position.y)];
@@ -127,23 +195,28 @@
     }
     
     _shark.position = ccp(_shark.position.x + (delta * scrollSpeed) -1,_shark.position.y);
-    
-    if(_shark.position.y < 71)
-       NSLog(@"Shark position %f x %f", _shark.position.x, _shark.position.y);
 }
 
--(void) updateScrollingImage : (NSArray *) clamps;
+-(void) updateScrollingImage : (NSArray *) clamps
+              withDebugTitle : (NSString *) debugString;
 {
     for (CCSprite *clamp in clamps) {
         CGPoint groundWorldPosition = [_physicsWorld
                                        convertToWorldSpace:clamp.position];
         CGPoint groundScreenPosition = [self
                                         convertToNodeSpace:groundWorldPosition];
+        
         if (groundScreenPosition.x <= (-1 * clamp.contentSize.width )){
             clamp.position = ccp(clamp.position.x + 2 * clamp.contentSize.width, clamp.position.y);
-            
+            NSLog(@"Debug string : %@ - xposition : %f", debugString, clamp.position.x);
         }
     }
+}
+
+-(void)touchBegan:(UITouch *)touch
+        withEvent:(UIEvent *)event
+{
+    [_shark screenTouched];
 }
 
 

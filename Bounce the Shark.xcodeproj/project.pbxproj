@@ -13,6 +13,7 @@
 		231233A81952C19F00DE8072 /* sharkhero.plist in Resources */ = {isa = PBXBuildFile; fileRef = 231233A61952C19F00DE8072 /* sharkhero.plist */; };
 		231233A91952C19F00DE8072 /* sharkhero.png in Resources */ = {isa = PBXBuildFile; fileRef = 231233A71952C19F00DE8072 /* sharkhero.png */; };
 		231233B81952D83800DE8072 /* SharkHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 231233B71952D83800DE8072 /* SharkHero.m */; };
+		2317C3E81955209E00D16093 /* roof.png in Resources */ = {isa = PBXBuildFile; fileRef = 2317C3E71955209E00D16093 /* roof.png */; };
 		23E2ACB31951968600B88DFD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB21951968600B88DFD /* QuartzCore.framework */; };
 		23E2ACB51951968600B88DFD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB41951968600B88DFD /* OpenGLES.framework */; };
 		23E2ACB71951968600B88DFD /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB61951968600B88DFD /* OpenAL.framework */; };
@@ -235,6 +236,7 @@
 		231233A71952C19F00DE8072 /* sharkhero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sharkhero.png; path = Resources/sharkhero.png; sourceTree = "<group>"; };
 		231233B61952D83800DE8072 /* SharkHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharkHero.h; path = Classes/SharkHero.h; sourceTree = "<group>"; };
 		231233B71952D83800DE8072 /* SharkHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharkHero.m; path = Classes/SharkHero.m; sourceTree = "<group>"; };
+		2317C3E71955209E00D16093 /* roof.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roof.png; sourceTree = "<group>"; };
 		23E2ACAF1951968600B88DFD /* Bounce the Shark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bounce the Shark.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E2ACB21951968600B88DFD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		23E2ACB41951968600B88DFD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -734,6 +736,7 @@
 				2312339C19526F1800DE8072 /* oceanfloortile.png */,
 				2312339E1952726900DE8072 /* ocean-ipad.png */,
 				231233A419527E1300DE8072 /* ocean.png */,
+				2317C3E71955209E00D16093 /* roof.png */,
 				23E2AF731951A4D500B88DFD /* Default-Landscape~ipad.png */,
 				23E2ACEF1951968600B88DFD /* Info.plist */,
 				23E2ACF01951968600B88DFD /* iTunesArtwork */,
@@ -1640,6 +1643,7 @@
 				23E2AF7B1951C77F00B88DFD /* oceanfloortile-ipad.png in Resources */,
 				23E2ACE61951968600B88DFD /* Icon-Small-50.png in Resources */,
 				23E2AECF1951968900B88DFD /* LICENSE_Kazmath.txt in Resources */,
+				2317C3E81955209E00D16093 /* roof.png in Resources */,
 				23E2ACDA1951968600B88DFD /* Icon-72.png in Resources */,
 				23E2AE281951968800B88DFD /* LICENSE_cocos2d.txt in Resources */,
 				23E2ACF11951968600B88DFD /* iTunesArtwork in Resources */,

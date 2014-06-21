@@ -18,5 +18,6 @@
 
 -(CCSpriteBatchNode *) getSpriteSheet;
 -(id) initWithImage;
+-(void) screenTouched;
 
 @end

@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>shark01.png</key>
+            <key>shark01-ipad.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{252,2},{117,99}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{153,117}</string>
             </dict>
-            <key>shark02.png</key>
+            <key>shark02-ipad.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{133,2},{117,99}}</string>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{153,117}</string>
             </dict>
-            <key>shark03.png</key>
+            <key>shark03-ipad.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,2},{129,99}}</string>
@@ -53,7 +53,7 @@
             <key>size</key>
             <string>{372,103}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:df028cbfd3fd714c7fd90b49a975f642:4810a4b4b670e90a1095953fd32edb20:fcf50a5e6ebf65161479a572c54174ca$</string>
+            <string>$TexturePacker:SmartUpdate:cd8f1eade4f41883fa88c92cdd1eb959:4810a4b4b670e90a1095953fd32edb20:fcf50a5e6ebf65161479a572c54174ca$</string>
             <key>textureFileName</key>
             <string>sharkhero.png</string>
         </dict>
