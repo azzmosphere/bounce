@@ -10,7 +10,7 @@
 #import "SharkHero.h"
 #import "CCPhysicsNode.h"
 #import "CCPhysicsBody.h"
-//#import "CCPhysicsBodyTypeStatic.h"
+#import "ObstacleFactory.h"
 #import "CCScene.h"
 
 @class SharkHero;

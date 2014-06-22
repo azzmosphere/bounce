@@ -14,6 +14,15 @@
 		231233A91952C19F00DE8072 /* sharkhero.png in Resources */ = {isa = PBXBuildFile; fileRef = 231233A71952C19F00DE8072 /* sharkhero.png */; };
 		231233B81952D83800DE8072 /* SharkHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 231233B71952D83800DE8072 /* SharkHero.m */; };
 		2317C3E81955209E00D16093 /* roof.png in Resources */ = {isa = PBXBuildFile; fileRef = 2317C3E71955209E00D16093 /* roof.png */; };
+		2317C3EB1955B8DC00D16093 /* ObstacleFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2317C3EA1955B8DC00D16093 /* ObstacleFactory.m */; };
+		236442D51956C81E0038C996 /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 236442D41956C81E0038C996 /* Obstacle.m */; };
+		236442D81956CAC50038C996 /* CoralSmallObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 236442D71956CAC50038C996 /* CoralSmallObstacle.m */; };
+		236442E41956D5FA0038C996 /* coral-1-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 236442E11956D5FA0038C996 /* coral-1-ipad.png */; };
+		236442E51956D5FA0038C996 /* coral-1-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 236442E21956D5FA0038C996 /* coral-1-ipadhd.png */; };
+		236442E81956D66D0038C996 /* coral-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 236442E71956D66D0038C996 /* coral-1.png */; };
+		236442EC195717180038C996 /* coral-2-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 236442E9195717180038C996 /* coral-2-ipad.png */; };
+		236442ED195717180038C996 /* coral-2-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 236442EA195717180038C996 /* coral-2-ipadhd.png */; };
+		236442EE195717180038C996 /* coral-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 236442EB195717180038C996 /* coral-2.png */; };
 		23E2ACB31951968600B88DFD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB21951968600B88DFD /* QuartzCore.framework */; };
 		23E2ACB51951968600B88DFD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB41951968600B88DFD /* OpenGLES.framework */; };
 		23E2ACB71951968600B88DFD /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB61951968600B88DFD /* OpenAL.framework */; };
@@ -237,6 +246,18 @@
 		231233B61952D83800DE8072 /* SharkHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharkHero.h; path = Classes/SharkHero.h; sourceTree = "<group>"; };
 		231233B71952D83800DE8072 /* SharkHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharkHero.m; path = Classes/SharkHero.m; sourceTree = "<group>"; };
 		2317C3E71955209E00D16093 /* roof.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roof.png; sourceTree = "<group>"; };
+		2317C3E91955B8DC00D16093 /* ObstacleFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObstacleFactory.h; path = Classes/ObstacleFactory.h; sourceTree = "<group>"; };
+		2317C3EA1955B8DC00D16093 /* ObstacleFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObstacleFactory.m; path = Classes/ObstacleFactory.m; sourceTree = "<group>"; };
+		236442D31956C81E0038C996 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obstacle.h; path = Classes/Obstacle.h; sourceTree = "<group>"; };
+		236442D41956C81E0038C996 /* Obstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Obstacle.m; path = Classes/Obstacle.m; sourceTree = "<group>"; };
+		236442D61956CAC50038C996 /* CoralSmallObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoralSmallObstacle.h; path = Classes/CoralSmallObstacle.h; sourceTree = "<group>"; };
+		236442D71956CAC50038C996 /* CoralSmallObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoralSmallObstacle.m; path = Classes/CoralSmallObstacle.m; sourceTree = "<group>"; };
+		236442E11956D5FA0038C996 /* coral-1-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coral-1-ipad.png"; sourceTree = "<group>"; };
+		236442E21956D5FA0038C996 /* coral-1-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coral-1-ipadhd.png"; sourceTree = "<group>"; };
+		236442E71956D66D0038C996 /* coral-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coral-1.png"; sourceTree = "<group>"; };
+		236442E9195717180038C996 /* coral-2-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coral-2-ipad.png"; sourceTree = "<group>"; };
+		236442EA195717180038C996 /* coral-2-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coral-2-ipadhd.png"; sourceTree = "<group>"; };
+		236442EB195717180038C996 /* coral-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coral-2.png"; sourceTree = "<group>"; };
 		23E2ACAF1951968600B88DFD /* Bounce the Shark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bounce the Shark.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E2ACB21951968600B88DFD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		23E2ACB41951968600B88DFD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -743,6 +764,12 @@
 				23E2ACF21951968600B88DFD /* iTunesArtwork@2x */,
 				231233A61952C19F00DE8072 /* sharkhero.plist */,
 				231233A71952C19F00DE8072 /* sharkhero.png */,
+				236442E11956D5FA0038C996 /* coral-1-ipad.png */,
+				236442E21956D5FA0038C996 /* coral-1-ipadhd.png */,
+				236442E71956D66D0038C996 /* coral-1.png */,
+				236442E9195717180038C996 /* coral-2-ipad.png */,
+				236442EA195717180038C996 /* coral-2-ipadhd.png */,
+				236442EB195717180038C996 /* coral-2.png */,
 				23E2ACD41951968600B88DFD /* Icons */,
 			);
 			name = Resources;
@@ -1552,6 +1579,12 @@
 		23E2AF591951968900B88DFD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2317C3E91955B8DC00D16093 /* ObstacleFactory.h */,
+				2317C3EA1955B8DC00D16093 /* ObstacleFactory.m */,
+				236442D31956C81E0038C996 /* Obstacle.h */,
+				236442D41956C81E0038C996 /* Obstacle.m */,
+				236442D61956CAC50038C996 /* CoralSmallObstacle.h */,
+				236442D71956CAC50038C996 /* CoralSmallObstacle.m */,
 				23E2AF771951BC1E00B88DFD /* MainGamePlay.h */,
 				23E2AF781951BC1E00B88DFD /* MainGamePlay.m */,
 				231233B61952D83800DE8072 /* SharkHero.h */,
@@ -1631,6 +1664,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23E2ACE21951968600B88DFD /* Icon-120.png in Resources */,
+				236442E41956D5FA0038C996 /* coral-1-ipad.png in Resources */,
 				23E2AEE61951968900B88DFD /* LICENSE_CCBReader.txt in Resources */,
 				2312339F1952726900DE8072 /* ocean-ipad.png in Resources */,
 				23E2ACD81951968600B88DFD /* Icon@2x.png in Resources */,
@@ -1639,13 +1673,17 @@
 				23E2AF741951A4D500B88DFD /* Default-Landscape~ipad.png in Resources */,
 				23E2ACD61951968600B88DFD /* Icon.png in Resources */,
 				23E2ACE41951968600B88DFD /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
+				236442EE195717180038C996 /* coral-2.png in Resources */,
+				236442E81956D66D0038C996 /* coral-1.png in Resources */,
 				23E2ACE81951968600B88DFD /* Icon-Small.png in Resources */,
 				23E2AF7B1951C77F00B88DFD /* oceanfloortile-ipad.png in Resources */,
 				23E2ACE61951968600B88DFD /* Icon-Small-50.png in Resources */,
 				23E2AECF1951968900B88DFD /* LICENSE_Kazmath.txt in Resources */,
 				2317C3E81955209E00D16093 /* roof.png in Resources */,
 				23E2ACDA1951968600B88DFD /* Icon-72.png in Resources */,
+				236442ED195717180038C996 /* coral-2-ipadhd.png in Resources */,
 				23E2AE281951968800B88DFD /* LICENSE_cocos2d.txt in Resources */,
+				236442E51956D5FA0038C996 /* coral-1-ipadhd.png in Resources */,
 				23E2ACF11951968600B88DFD /* iTunesArtwork in Resources */,
 				23E2ACEC1951968600B88DFD /* Icon-Spotlight-iOS7.png in Resources */,
 				231233A91952C19F00DE8072 /* sharkhero.png in Resources */,
@@ -1657,6 +1695,7 @@
 				231233A81952C19F00DE8072 /* sharkhero.plist in Resources */,
 				231233A519527E1300DE8072 /* ocean.png in Resources */,
 				23E2AEB41951968800B88DFD /* ChangeLog in Resources */,
+				236442EC195717180038C996 /* coral-2-ipad.png in Resources */,
 				23E2ACF31951968600B88DFD /* iTunesArtwork@2x in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1739,6 +1778,7 @@
 				23E2AE441951968800B88DFD /* OALSimpleAudio.m in Sources */,
 				23E2AD361951968700B88DFD /* CCGLProgram.m in Sources */,
 				23E2AF581951968900B88DFD /* main.m in Sources */,
+				2317C3EB1955B8DC00D16093 /* ObstacleFactory.m in Sources */,
 				23E2AE6B1951968800B88DFD /* OALAudioSession.m in Sources */,
 				23E2AEE21951968900B88DFD /* CCBLocalizationManager.m in Sources */,
 				23E2ADCE1951968700B88DFD /* CCTiledMapObjectGroup.m in Sources */,
@@ -1760,6 +1800,7 @@
 				23E2ADBE1951968700B88DFD /* CCTextureAtlas.m in Sources */,
 				23E2AE7F1951968800B88DFD /* OALAudioFile.m in Sources */,
 				23E2ADA51951968700B88DFD /* ccShaders.m in Sources */,
+				236442D81956CAC50038C996 /* CoralSmallObstacle.m in Sources */,
 				23E2AEB91951968800B88DFD /* matrix.c in Sources */,
 				23E2ADCB1951968700B88DFD /* CCTiledMapLayer.m in Sources */,
 				23E2AEBF1951968800B88DFD /* neon_matrix_impl.c in Sources */,
@@ -1769,6 +1810,7 @@
 				23E2AEC91951968900B88DFD /* vec2.c in Sources */,
 				23E2ACF91951968600B88DFD /* CCAction.m in Sources */,
 				23E2AD5D1951968700B88DFD /* CCParallaxNode.m in Sources */,
+				236442D51956C81E0038C996 /* Obstacle.m in Sources */,
 				23E2AEC51951968900B88DFD /* ray2.c in Sources */,
 				23E2AE411951968800B88DFD /* OALAudioTracks.m in Sources */,
 				23E2AE3E1951968800B88DFD /* OALAudioTrackNotifications.m in Sources */,

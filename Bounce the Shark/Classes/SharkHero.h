@@ -19,5 +19,6 @@
 -(CCSpriteBatchNode *) getSpriteSheet;
 -(id) initWithImage;
 -(void) screenTouched;
+-(void) neutralCollision;
 
 @end

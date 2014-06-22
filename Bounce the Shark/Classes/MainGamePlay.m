@@ -13,24 +13,31 @@
 #import "MainGamePlay.h"
 
 @implementation MainGamePlay {
-    CCSprite      *_floor1;
-    CCSprite      *_floor2;
-    NSArray       *_floor;
+    CCSprite        *_floor1;
+    CCSprite        *_floor2;
+    NSArray         *_floor;
     
-    CCSprite      *_bg1;
-    CCSprite      *_bg2;
-    NSArray       *_bg;
+    CCSprite        *_bg1;
+    CCSprite        *_bg2;
+    NSArray         *_bg;
     
-    CCSprite      *_roof1;
-    CCSprite      *_roof2;
-    NSArray       *_roof;
+    CCSprite        *_roof1;
+    CCSprite        *_roof2;
+    NSArray         *_roof;
     
-    CCPhysicsNode *_physicsWorld;
+    CCPhysicsNode   *_physicsWorld;
     
-    SharkHero     *_shark;
+    SharkHero       *_shark;
     
-    CGFloat scrollSpeed;
+    ObstacleFactory *_obstacleFactory;
+    
+    CGFloat         scrollSpeed;
+    
+    CGPoint         _heroOrigPos;
 }
+
+// DEBUG flag, when set to on will draw frames around physics object
+static const BOOL DEBUG_MODE = TRUE;
 
 
 // -----------------------------------------------------------------------
@@ -65,6 +72,7 @@
     [self addChild:_bg2];
 
     _physicsWorld = [CCPhysicsNode node];
+    [_physicsWorld setDebugDraw:DEBUG_MODE];
     _floor = [self setFloor];
     _roof  = [self setRoof];
     [self addChild:_physicsWorld];
@@ -79,6 +87,15 @@
     
     _physicsWorld.gravity = ccp(0,-50);
     scrollSpeed = 80.f;
+    
+    _heroOrigPos = [_physicsWorld convertToWorldSpace: _shark.position];
+    
+    _physicsWorld.collisionDelegate = self;
+    
+// DEBUG CODE
+[ObstacleFactory initWithPhysicsNode: _physicsWorld];
+
+    
     return self;
 }
 
@@ -179,8 +196,8 @@
 
 
 -(void) update:(CCTime)delta
-{    
-    _physicsWorld.position = ccp(((_physicsWorld.position.x - (scrollSpeed *delta)) + 1), _physicsWorld.position.y);
+{
+    [self setCameraPosition : delta];
     
     [self updateScrollingImage: _floor  withDebugTitle : @"_floor"];
     [self updateScrollingImage: _roof   withDebugTitle : @"_roof"];
@@ -193,8 +210,7 @@
             bg.position = ccp(bg.position.x + 2 * bg.contentSize.width, bg.position.y);
         }
     }
-    
-    _shark.position = ccp(_shark.position.x + (delta * scrollSpeed) -1,_shark.position.y);
+
 }
 
 -(void) updateScrollingImage : (NSArray *) clamps
@@ -219,6 +235,35 @@
     [_shark screenTouched];
 }
 
+/*
+ *==============================================================================
+ * Set the camera position.
+ *==============================================================================
+ */
+-(void)setCameraPosition : (CCTime) delta
+{
+    CGPoint heroPos   = [_physicsWorld convertToWorldSpace: _shark.position];
+    CGFloat thresHold = 200;
+    
+    if( heroPos.x < (_heroOrigPos.x - thresHold) ){
+        _physicsWorld.position = ccp((_physicsWorld.position.x + 1), _physicsWorld.position.y);
+        NSLog(@"hero is below thresold : %f",heroPos.x);
+    }
+    else {
+        _shark.position = ccp(_shark.position.x + (delta * scrollSpeed) -1,_shark.position.y);
+        _physicsWorld.position = ccp(((_physicsWorld.position.x - (scrollSpeed *delta)) + 1), _physicsWorld.position.y);
+    }
+}
+
+
+-(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair
+                          hero:(SharkHero *)hero
+                          coral_small:(CoralSmallObstacle *)coral {
+    NSLog(@"Coral Hit");
+    [_shark neutralCollision];
+    
+    return TRUE;
+}
 
 
 @end

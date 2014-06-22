@@ -13,9 +13,9 @@
     CCSpriteBatchNode *_spriteSheet;
 }
 
-const static CGFloat BOUNDING_BOX_OFFSET = 0.0f;
 const static CGFloat SHARK_X_PULSE       = 0.0f;
 const static CGFloat SHARK_IMPULSE_SPEED = 150.0f;
+const static int     FRAMES              = 3;
 
 -(id) initWithImage
 {
@@ -26,7 +26,7 @@ const static CGFloat SHARK_IMPULSE_SPEED = 150.0f;
     _spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"sharkhero.png"];
     
     NSMutableArray *walkAnimFrames = [NSMutableArray array];
-    for (int i=1; i<=3; i++) {
+    for (int i=1; i<= FRAMES; i++) {
         NSLog(@"iteration frame:shark0%d.png",i);
         [walkAnimFrames addObject:
          [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
@@ -40,14 +40,17 @@ const static CGFloat SHARK_IMPULSE_SPEED = 150.0f;
     [self runAction:_swimAnim];
     [_spriteSheet addChild:self];
     
+    NSLog(@"shark is %f x %f", self.contentSizeInPoints.width,self.contentSizeInPoints.height);
+    
     self.physicsBody = [CCPhysicsBody bodyWithRect:
-                        CGRectMake(CGPointZero.x + self.contentSize.width * BOUNDING_BOX_OFFSET,
-                                   CGPointZero.y + self.contentSize.height * BOUNDING_BOX_OFFSET,
-                                   self.contentSize.width  * (1 - BOUNDING_BOX_OFFSET),
-                                   self.contentSize.height * (1 - BOUNDING_BOX_OFFSET))
+                        CGRectMake(CGPointZero.x + 20,
+                                   CGPointZero.y + 10,
+                                   self.contentSizeInPoints.width / FRAMES,
+                                   self.contentSizeInPoints.height)
                    cornerRadius:0];
     
     self.physicsBody.affectedByGravity = TRUE;
+    self.physicsBody.collisionType     = @"hero";
     
     return self;
 }
@@ -64,6 +67,14 @@ const static CGFloat SHARK_IMPULSE_SPEED = 150.0f;
  *=============================================================================
  */
 -(void) screenTouched
+{
+    //OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
+    //[audio playEffect: (NSString *) SCR_TOUCHED_SEFFECT];
+    [self.physicsBody applyImpulse:ccp(SHARK_X_PULSE, SHARK_IMPULSE_SPEED)];
+    
+}
+
+-(void) neutralCollision
 {
     //OALSimpleAudio *audio = [OALSimpleAudio sharedInstance];
     //[audio playEffect: (NSString *) SCR_TOUCHED_SEFFECT];
