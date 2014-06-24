@@ -13,10 +13,14 @@
 +(void) initWithPhysicsNode : (CCPhysicsNode *) world
 {
     // randomly add coral
-    CoralSmallObstacle *coral1 = [[CoralSmallObstacle alloc] initWithImageAndPhysicsBody];
-    [coral1 setPosition:ccp(900,0)];
-    [coral1 setAnchorPoint:ccp(0,0)];
-    [world addChild:coral1];
+    //CoralSmallObstacle *coral1 = [[CoralSmallObstacle alloc] initWithImageAndPhysicsBody];
+    //CoralLargeObstacle *obstacle = [[CoralLargeObstacle alloc] initWithImageAndPhysicsBody];
+    HookObstacle *obstacle = [[HookObstacle alloc] initWithImage];
+    [obstacle setPosition:ccp(900,0)];
+    [obstacle setAnchorPoint:ccp(0,0)];
+    //[world addChild: obstacle];
+    
+    [world addChild: [obstacle getSpriteSheet]];
 }
 
 @end

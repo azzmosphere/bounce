@@ -6,17 +6,12 @@
 //  Copyright (c) 2014 AZZMOSPHERE. All rights reserved.
 //
 
-#import "CCAnimation.h"
-#import "CCSpriteFrameCache.h"
-#import "CCSpriteBatchNode.h"
-#import "CCAction.h"
-#import "CCActionInterval.h"
-#import "CCPhysicsBody.h"
+#import "AnimObstacle.h"
 #import "CCSprite.h"
 
-@interface SharkHero : CCSprite
+@interface SharkHero : AnimObstacle
 
--(CCSpriteBatchNode *) getSpriteSheet;
+//-(CCSpriteBatchNode *) getSpriteSheet;
 -(id) initWithImage;
 -(void) screenTouched;
 -(void) neutralCollision;

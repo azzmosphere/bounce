@@ -8,6 +8,8 @@
 
 #import "CCPhysicsNode.h"
 #import "CoralSmallObstacle.h"
+#import "CoralLargeObstacle.h"
+#import "HookObstacle.h"
 #import "CCNode.h"
 
 @interface ObstacleFactory : CCNode

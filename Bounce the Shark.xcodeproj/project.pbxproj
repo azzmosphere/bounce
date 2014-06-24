@@ -23,6 +23,14 @@
 		236442EC195717180038C996 /* coral-2-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 236442E9195717180038C996 /* coral-2-ipad.png */; };
 		236442ED195717180038C996 /* coral-2-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 236442EA195717180038C996 /* coral-2-ipadhd.png */; };
 		236442EE195717180038C996 /* coral-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 236442EB195717180038C996 /* coral-2.png */; };
+		238D144C19582A82004AA6BD /* hook-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = 238D144619582A82004AA6BD /* hook-ipad.plist */; };
+		238D144D19582A82004AA6BD /* hook-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 238D144719582A82004AA6BD /* hook-ipad.png */; };
+		238D144E19582A82004AA6BD /* hook-ipadhd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 238D144819582A82004AA6BD /* hook-ipadhd.plist */; };
+		238D144F19582A82004AA6BD /* hook-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 238D144919582A82004AA6BD /* hook-ipadhd.png */; };
+		238D145019582A82004AA6BD /* hook.plist in Resources */ = {isa = PBXBuildFile; fileRef = 238D144A19582A82004AA6BD /* hook.plist */; };
+		238D145119582A82004AA6BD /* hook.png in Resources */ = {isa = PBXBuildFile; fileRef = 238D144B19582A82004AA6BD /* hook.png */; };
+		238D14541958E7C0004AA6BD /* HookObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 238D14531958E7C0004AA6BD /* HookObstacle.m */; };
+		23A80395195963FC00BDE767 /* AnimObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A80394195963FC00BDE767 /* AnimObstacle.m */; };
 		23E2ACB31951968600B88DFD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB21951968600B88DFD /* QuartzCore.framework */; };
 		23E2ACB51951968600B88DFD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB41951968600B88DFD /* OpenGLES.framework */; };
 		23E2ACB71951968600B88DFD /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB61951968600B88DFD /* OpenAL.framework */; };
@@ -225,6 +233,7 @@
 		23E2AF741951A4D500B88DFD /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E2AF731951A4D500B88DFD /* Default-Landscape~ipad.png */; };
 		23E2AF791951BC1E00B88DFD /* MainGamePlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E2AF781951BC1E00B88DFD /* MainGamePlay.m */; };
 		23E2AF7B1951C77F00B88DFD /* oceanfloortile-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E2AF7A1951C77F00B88DFD /* oceanfloortile-ipad.png */; };
+		23E303D31957931200F39B6F /* CoralLargeObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E303D21957931200F39B6F /* CoralLargeObstacle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,6 +267,16 @@
 		236442E9195717180038C996 /* coral-2-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coral-2-ipad.png"; sourceTree = "<group>"; };
 		236442EA195717180038C996 /* coral-2-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coral-2-ipadhd.png"; sourceTree = "<group>"; };
 		236442EB195717180038C996 /* coral-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coral-2.png"; sourceTree = "<group>"; };
+		238D144619582A82004AA6BD /* hook-ipad.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "hook-ipad.plist"; path = "Resources/hook-ipad.plist"; sourceTree = "<group>"; };
+		238D144719582A82004AA6BD /* hook-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hook-ipad.png"; path = "Resources/hook-ipad.png"; sourceTree = "<group>"; };
+		238D144819582A82004AA6BD /* hook-ipadhd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "hook-ipadhd.plist"; path = "Resources/hook-ipadhd.plist"; sourceTree = "<group>"; };
+		238D144919582A82004AA6BD /* hook-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hook-ipadhd.png"; path = "Resources/hook-ipadhd.png"; sourceTree = "<group>"; };
+		238D144A19582A82004AA6BD /* hook.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = hook.plist; path = Resources/hook.plist; sourceTree = "<group>"; };
+		238D144B19582A82004AA6BD /* hook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hook.png; path = Resources/hook.png; sourceTree = "<group>"; };
+		238D14521958E7C0004AA6BD /* HookObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HookObstacle.h; path = Classes/HookObstacle.h; sourceTree = "<group>"; };
+		238D14531958E7C0004AA6BD /* HookObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HookObstacle.m; path = Classes/HookObstacle.m; sourceTree = "<group>"; };
+		23A80393195963FC00BDE767 /* AnimObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimObstacle.h; path = Classes/AnimObstacle.h; sourceTree = "<group>"; };
+		23A80394195963FC00BDE767 /* AnimObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimObstacle.m; path = Classes/AnimObstacle.m; sourceTree = "<group>"; };
 		23E2ACAF1951968600B88DFD /* Bounce the Shark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bounce the Shark.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E2ACB21951968600B88DFD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		23E2ACB41951968600B88DFD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -682,6 +701,8 @@
 		23E2AF771951BC1E00B88DFD /* MainGamePlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainGamePlay.h; path = Classes/MainGamePlay.h; sourceTree = "<group>"; };
 		23E2AF781951BC1E00B88DFD /* MainGamePlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainGamePlay.m; path = Classes/MainGamePlay.m; sourceTree = "<group>"; };
 		23E2AF7A1951C77F00B88DFD /* oceanfloortile-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oceanfloortile-ipad.png"; sourceTree = "<group>"; };
+		23E303D11957931200F39B6F /* CoralLargeObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoralLargeObstacle.h; path = Classes/CoralLargeObstacle.h; sourceTree = "<group>"; };
+		23E303D21957931200F39B6F /* CoralLargeObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoralLargeObstacle.m; path = Classes/CoralLargeObstacle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -770,6 +791,12 @@
 				236442E9195717180038C996 /* coral-2-ipad.png */,
 				236442EA195717180038C996 /* coral-2-ipadhd.png */,
 				236442EB195717180038C996 /* coral-2.png */,
+				238D144619582A82004AA6BD /* hook-ipad.plist */,
+				238D144719582A82004AA6BD /* hook-ipad.png */,
+				238D144819582A82004AA6BD /* hook-ipadhd.plist */,
+				238D144919582A82004AA6BD /* hook-ipadhd.png */,
+				238D144A19582A82004AA6BD /* hook.plist */,
+				238D144B19582A82004AA6BD /* hook.png */,
 				23E2ACD41951968600B88DFD /* Icons */,
 			);
 			name = Resources;
@@ -1583,8 +1610,14 @@
 				2317C3EA1955B8DC00D16093 /* ObstacleFactory.m */,
 				236442D31956C81E0038C996 /* Obstacle.h */,
 				236442D41956C81E0038C996 /* Obstacle.m */,
+				23A80393195963FC00BDE767 /* AnimObstacle.h */,
+				23A80394195963FC00BDE767 /* AnimObstacle.m */,
+				238D14521958E7C0004AA6BD /* HookObstacle.h */,
+				238D14531958E7C0004AA6BD /* HookObstacle.m */,
 				236442D61956CAC50038C996 /* CoralSmallObstacle.h */,
 				236442D71956CAC50038C996 /* CoralSmallObstacle.m */,
+				23E303D11957931200F39B6F /* CoralLargeObstacle.h */,
+				23E303D21957931200F39B6F /* CoralLargeObstacle.m */,
 				23E2AF771951BC1E00B88DFD /* MainGamePlay.h */,
 				23E2AF781951BC1E00B88DFD /* MainGamePlay.m */,
 				231233B61952D83800DE8072 /* SharkHero.h */,
@@ -1669,15 +1702,18 @@
 				2312339F1952726900DE8072 /* ocean-ipad.png in Resources */,
 				23E2ACD81951968600B88DFD /* Icon@2x.png in Resources */,
 				23E2ACEA1951968600B88DFD /* Icon-Small@2x.png in Resources */,
+				238D144E19582A82004AA6BD /* hook-ipadhd.plist in Resources */,
 				23E2ACDC1951968600B88DFD /* Icon-72@2x.png in Resources */,
 				23E2AF741951A4D500B88DFD /* Default-Landscape~ipad.png in Resources */,
 				23E2ACD61951968600B88DFD /* Icon.png in Resources */,
+				238D144C19582A82004AA6BD /* hook-ipad.plist in Resources */,
 				23E2ACE41951968600B88DFD /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
 				236442EE195717180038C996 /* coral-2.png in Resources */,
 				236442E81956D66D0038C996 /* coral-1.png in Resources */,
 				23E2ACE81951968600B88DFD /* Icon-Small.png in Resources */,
 				23E2AF7B1951C77F00B88DFD /* oceanfloortile-ipad.png in Resources */,
 				23E2ACE61951968600B88DFD /* Icon-Small-50.png in Resources */,
+				238D144D19582A82004AA6BD /* hook-ipad.png in Resources */,
 				23E2AECF1951968900B88DFD /* LICENSE_Kazmath.txt in Resources */,
 				2317C3E81955209E00D16093 /* roof.png in Resources */,
 				23E2ACDA1951968600B88DFD /* Icon-72.png in Resources */,
@@ -1686,6 +1722,7 @@
 				236442E51956D5FA0038C996 /* coral-1-ipadhd.png in Resources */,
 				23E2ACF11951968600B88DFD /* iTunesArtwork in Resources */,
 				23E2ACEC1951968600B88DFD /* Icon-Spotlight-iOS7.png in Resources */,
+				238D144F19582A82004AA6BD /* hook-ipadhd.png in Resources */,
 				231233A91952C19F00DE8072 /* sharkhero.png in Resources */,
 				23E2ACE01951968600B88DFD /* Icon-76@2x.png in Resources */,
 				23E2AF541951968900B88DFD /* LICENSE_Chipmunk.txt in Resources */,
@@ -1695,8 +1732,10 @@
 				231233A81952C19F00DE8072 /* sharkhero.plist in Resources */,
 				231233A519527E1300DE8072 /* ocean.png in Resources */,
 				23E2AEB41951968800B88DFD /* ChangeLog in Resources */,
+				238D145119582A82004AA6BD /* hook.png in Resources */,
 				236442EC195717180038C996 /* coral-2-ipad.png in Resources */,
 				23E2ACF31951968600B88DFD /* iTunesArtwork@2x in Resources */,
+				238D145019582A82004AA6BD /* hook.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1717,6 +1756,7 @@
 				23E2AD191951968600B88DFD /* CCAtlasNode.m in Sources */,
 				23E2AE671951968800B88DFD /* OpenALManager.m in Sources */,
 				23E2AE731951968800B88DFD /* IOSVersion.m in Sources */,
+				238D14541958E7C0004AA6BD /* HookObstacle.m in Sources */,
 				23E2AD281951968600B88DFD /* CCDirector.m in Sources */,
 				23E2AE931951968800B88DFD /* CCScrollView.m in Sources */,
 				23E2AD861951968700B88DFD /* CCResponder.m in Sources */,
@@ -1763,6 +1803,7 @@
 				23E2ADA21951968700B88DFD /* CCShaderCache.m in Sources */,
 				23E2AEDF1951968900B88DFD /* CCBSequenceProperty.m in Sources */,
 				23E2ADE61951968800B88DFD /* CCGLView.m in Sources */,
+				23E303D31957931200F39B6F /* CoralLargeObstacle.m in Sources */,
 				23E2ADA91951968700B88DFD /* CCSprite.m in Sources */,
 				23E2AD051951968600B88DFD /* CCActionInterval.m in Sources */,
 				23E2AD741951968700B88DFD /* CCPhysicsJoint.m in Sources */,
@@ -1828,6 +1869,7 @@
 				23E2AE991951968800B88DFD /* CCTableView.m in Sources */,
 				23E2AF5C1951968900B88DFD /* AppDelegate.m in Sources */,
 				23E2AD2C1951968600B88DFD /* CCDrawingPrimitives.m in Sources */,
+				23A80395195963FC00BDE767 /* AnimObstacle.m in Sources */,
 				23E2AE1D1951968800B88DFD /* TGAlib.m in Sources */,
 				23E2ADE91951968800B88DFD /* UITouch+CC.m in Sources */,
 				23E2AEC71951968900B88DFD /* utility.c in Sources */,

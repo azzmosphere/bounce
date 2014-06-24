@@ -265,5 +265,14 @@ static const BOOL DEBUG_MODE = TRUE;
     return TRUE;
 }
 
+-(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair
+                          hero:(SharkHero *)hero
+                   coral_large:(CoralLargeObstacle *)coral {
+    NSLog(@"Coral Hit");
+    [_shark neutralCollision];
+    
+    return TRUE;
+}
+
 
 @end
