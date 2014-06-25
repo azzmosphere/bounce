@@ -15,8 +15,6 @@
 
 @interface AnimObstacle : Obstacle
 
--(CCSpriteBatchNode *) getSpriteSheet;
-
 extern const int _FRAME_ORIN_LANDSCAPE;
 extern const int _FRAME_ORIN_PORTRAIT;
 
@@ -39,5 +37,15 @@ extern const int _FRAME_ORIN_PORTRAIT;
       withSprintStr : (NSString *) sprintRef
   withCollisionType : (NSString *) collisionType
    withBoundingBody : (CGRect) boundingBody;
+
+-(id) initWithImage : (NSString *) imageName
+          withPlist : (NSString *) plist
+     withFrameCount : (int) frameCount
+      withSprintStr : (NSString *) sprintRef
+  withCollisionType : (NSString *) collisionType
+   withBoundingBody : (CGRect) boundingBody
+    withPhysicsType : (CCPhysicsBodyType) physicsType;
+
+-(CCSpriteBatchNode *) getSpriteSheet;
 
 @end

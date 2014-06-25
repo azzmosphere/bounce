@@ -15,5 +15,6 @@
 -(id) initWithImage;
 -(void) screenTouched;
 -(void) neutralCollision;
+-(void) positiveCollision;
 
 @end

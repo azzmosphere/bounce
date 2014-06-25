@@ -91,10 +91,8 @@ static const BOOL DEBUG_MODE = TRUE;
     _heroOrigPos = [_physicsWorld convertToWorldSpace: _shark.position];
     
     _physicsWorld.collisionDelegate = self;
-    
-// DEBUG CODE
-[ObstacleFactory initWithPhysicsNode: _physicsWorld];
-
+    _obstacleFactory = [[ObstacleFactory alloc]
+             initWithPhysicsNode: _physicsWorld];
     
     return self;
 }
@@ -210,6 +208,8 @@ static const BOOL DEBUG_MODE = TRUE;
             bg.position = ccp(bg.position.x + 2 * bg.contentSize.width, bg.position.y);
         }
     }
+    
+    [_obstacleFactory updateObstacles];
 
 }
 
@@ -255,7 +255,10 @@ static const BOOL DEBUG_MODE = TRUE;
     }
 }
 
-
+/*
+ *==============================================================================
+ *==============================================================================
+ */
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair
                           hero:(SharkHero *)hero
                           coral_small:(CoralSmallObstacle *)coral {
@@ -265,6 +268,10 @@ static const BOOL DEBUG_MODE = TRUE;
     return TRUE;
 }
 
+/*
+ *==============================================================================
+ *==============================================================================
+ */
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair
                           hero:(SharkHero *)hero
                    coral_large:(CoralLargeObstacle *)coral {
@@ -274,5 +281,23 @@ static const BOOL DEBUG_MODE = TRUE;
     return TRUE;
 }
 
+/*
+ *==============================================================================
+ *==============================================================================
+ */
+-(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair
+                          hero:(SharkHero *)hero
+                          coin:(Coin *)coin {
+    NSLog(@"Coin Hit");
+    
+    [_physicsWorld removeChild: coin];
+    [_shark positiveCollision];
+    
+    // Update the transition manager at this point,  that we have just hit
+    // a coint.  It will be up to the transition manager to decide what happens
+    // in terms of benefit for hitting a coin.
+    
+    return TRUE;
+}
 
 @end

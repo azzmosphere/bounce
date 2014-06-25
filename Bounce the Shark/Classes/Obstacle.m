@@ -27,6 +27,37 @@
     return self;
 }
 
+
+-(id) initWithImageNamedAndPhysics:(NSString *)  imageName
+                  withBoundingBox : (CGRect)     boundingBox
+                withCollisionType : (NSString *) collisionType
+{
+    [self attachBoundingBody:boundingBox
+           withCollisionType:collisionType];
+    return self;
+}
+
+-(void) attachBoundingBody : (CGRect) boundingBody
+        withCollisionType : (NSString *) collisionType
+{
+    [self attachBoundingBody:boundingBody
+           withCollisionType:collisionType
+             withPhysicsType:CCPhysicsBodyTypeDynamic];
+}
+
+-(void) attachBoundingBody : (CGRect)            boundingBody
+         withCollisionType : (NSString *)        collisionType
+           withPhysicsType : (CCPhysicsBodyType) physicsType
+{
+    self.physicsBody = [CCPhysicsBody
+                        bodyWithRect: boundingBody
+                        cornerRadius: 0];
+    self.physicsBody.allowsRotation    = FALSE;
+    self.physicsBody.affectedByGravity = TRUE;
+    self.physicsBody.collisionType     = collisionType;
+    self.physicsBody.type              = physicsType;
+}
+
 -(BOOL) getIsAttached
 {
     return _isAttached;

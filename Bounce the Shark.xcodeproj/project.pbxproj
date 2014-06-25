@@ -30,6 +30,10 @@
 		238D145019582A82004AA6BD /* hook.plist in Resources */ = {isa = PBXBuildFile; fileRef = 238D144A19582A82004AA6BD /* hook.plist */; };
 		238D145119582A82004AA6BD /* hook.png in Resources */ = {isa = PBXBuildFile; fileRef = 238D144B19582A82004AA6BD /* hook.png */; };
 		238D14541958E7C0004AA6BD /* HookObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 238D14531958E7C0004AA6BD /* HookObstacle.m */; };
+		23A21EC5195A2A5B000F1C5D /* coin-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A21EC2195A2A5B000F1C5D /* coin-ipad.png */; };
+		23A21EC6195A2A5B000F1C5D /* coin-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A21EC3195A2A5B000F1C5D /* coin-ipadhd.png */; };
+		23A21EC7195A2A5B000F1C5D /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A21EC4195A2A5B000F1C5D /* coin.png */; };
+		23A21ECA195A2A8E000F1C5D /* Coin.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A21EC9195A2A8E000F1C5D /* Coin.m */; };
 		23A80395195963FC00BDE767 /* AnimObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A80394195963FC00BDE767 /* AnimObstacle.m */; };
 		23E2ACB31951968600B88DFD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB21951968600B88DFD /* QuartzCore.framework */; };
 		23E2ACB51951968600B88DFD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB41951968600B88DFD /* OpenGLES.framework */; };
@@ -275,6 +279,11 @@
 		238D144B19582A82004AA6BD /* hook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hook.png; path = Resources/hook.png; sourceTree = "<group>"; };
 		238D14521958E7C0004AA6BD /* HookObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HookObstacle.h; path = Classes/HookObstacle.h; sourceTree = "<group>"; };
 		238D14531958E7C0004AA6BD /* HookObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HookObstacle.m; path = Classes/HookObstacle.m; sourceTree = "<group>"; };
+		23A21EC2195A2A5B000F1C5D /* coin-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin-ipad.png"; sourceTree = "<group>"; };
+		23A21EC3195A2A5B000F1C5D /* coin-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin-ipadhd.png"; sourceTree = "<group>"; };
+		23A21EC4195A2A5B000F1C5D /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
+		23A21EC8195A2A8E000F1C5D /* Coin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Coin.h; path = Classes/Coin.h; sourceTree = "<group>"; };
+		23A21EC9195A2A8E000F1C5D /* Coin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Coin.m; path = Classes/Coin.m; sourceTree = "<group>"; };
 		23A80393195963FC00BDE767 /* AnimObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimObstacle.h; path = Classes/AnimObstacle.h; sourceTree = "<group>"; };
 		23A80394195963FC00BDE767 /* AnimObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimObstacle.m; path = Classes/AnimObstacle.m; sourceTree = "<group>"; };
 		23E2ACAF1951968600B88DFD /* Bounce the Shark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bounce the Shark.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -774,6 +783,9 @@
 		23E2ACCB1951968600B88DFD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				23A21EC2195A2A5B000F1C5D /* coin-ipad.png */,
+				23A21EC3195A2A5B000F1C5D /* coin-ipadhd.png */,
+				23A21EC4195A2A5B000F1C5D /* coin.png */,
 				23E2AF7A1951C77F00B88DFD /* oceanfloortile-ipad.png */,
 				2312339C19526F1800DE8072 /* oceanfloortile.png */,
 				2312339E1952726900DE8072 /* ocean-ipad.png */,
@@ -1624,6 +1636,8 @@
 				231233B71952D83800DE8072 /* SharkHero.m */,
 				23E2AF5A1951968900B88DFD /* AppDelegate.h */,
 				23E2AF5B1951968900B88DFD /* AppDelegate.m */,
+				23A21EC8195A2A8E000F1C5D /* Coin.h */,
+				23A21EC9195A2A8E000F1C5D /* Coin.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1708,7 +1722,9 @@
 				23E2ACD61951968600B88DFD /* Icon.png in Resources */,
 				238D144C19582A82004AA6BD /* hook-ipad.plist in Resources */,
 				23E2ACE41951968600B88DFD /* Icon-iPad-Spotlight-iOS7@2x.png in Resources */,
+				23A21EC5195A2A5B000F1C5D /* coin-ipad.png in Resources */,
 				236442EE195717180038C996 /* coral-2.png in Resources */,
+				23A21EC6195A2A5B000F1C5D /* coin-ipadhd.png in Resources */,
 				236442E81956D66D0038C996 /* coral-1.png in Resources */,
 				23E2ACE81951968600B88DFD /* Icon-Small.png in Resources */,
 				23E2AF7B1951C77F00B88DFD /* oceanfloortile-ipad.png in Resources */,
@@ -1728,6 +1744,7 @@
 				23E2AF541951968900B88DFD /* LICENSE_Chipmunk.txt in Resources */,
 				2312339D19526F1800DE8072 /* oceanfloortile.png in Resources */,
 				23E2ACEE1951968600B88DFD /* Icon-Spotlight-iOS7@2x.png in Resources */,
+				23A21EC7195A2A5B000F1C5D /* coin.png in Resources */,
 				23E2ACDE1951968600B88DFD /* Icon-76.png in Resources */,
 				231233A81952C19F00DE8072 /* sharkhero.plist in Resources */,
 				231233A519527E1300DE8072 /* ocean.png in Resources */,
@@ -1761,6 +1778,7 @@
 				23E2AE931951968800B88DFD /* CCScrollView.m in Sources */,
 				23E2AD861951968700B88DFD /* CCResponder.m in Sources */,
 				23E2AD1D1951968600B88DFD /* CCClippingNode.m in Sources */,
+				23A21ECA195A2A8E000F1C5D /* Coin.m in Sources */,
 				23E2ADB01951968700B88DFD /* CCSpriteBatchNode.m in Sources */,
 				23E2ADD41951968700B88DFD /* CCTransition.m in Sources */,
 				23E2ADB31951968700B88DFD /* CCSpriteFrame.m in Sources */,

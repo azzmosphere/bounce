@@ -54,5 +54,10 @@ const static int     RECT_OFFSET         = 20;
     
 }
 
+-(void) positiveCollision
+{
+    // Play any audio for doing something positive.
+}
+
 
 @end

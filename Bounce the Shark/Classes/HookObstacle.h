@@ -10,6 +10,7 @@
 
 @interface HookObstacle : AnimObstacle
 
--(id) initWithImage;
+-(id)      initWithImage;
+-(CGFloat) getContentHeight;
 
 @end

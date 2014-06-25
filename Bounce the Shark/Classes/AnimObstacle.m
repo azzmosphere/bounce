@@ -74,6 +74,25 @@ const int _FRAME_ORIN_PORTRAIT  = 1;
    withBoundingBody : (CGRect) boundingBody
 {
 
+    return [self initWithImage : imageName
+                     withPlist : plist
+                withFrameCount : frameCount
+                 withSprintStr : sprintRef
+             withCollisionType : collisionType
+              withBoundingBody : boundingBody
+               withPhysicsType : CCPhysicsBodyTypeDynamic
+            ];
+}
+
+-(id) initWithImage : (NSString *) imageName
+          withPlist : (NSString *) plist
+     withFrameCount : (int) frameCount
+      withSprintStr : (NSString *) sprintRef
+  withCollisionType : (NSString *) collisionType
+   withBoundingBody : (CGRect) boundingBody
+    withPhysicsType : (CCPhysicsBodyType) physicsType
+{
+    
     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:plist];
     _spriteSheet = [CCSpriteBatchNode batchNodeWithFile:imageName];
@@ -93,18 +112,12 @@ const int _FRAME_ORIN_PORTRAIT  = 1;
     [self runAction:_defaultAnim];
     [_spriteSheet addChild:self];
     
-    NSLog(@"obstalce is %f x %f", self.contentSizeInPoints.width,self.contentSizeInPoints.height);
+    NSLog(@"obstacle is %f x %f", self.contentSizeInPoints.width,self.contentSizeInPoints.height);
     
-    self.physicsBody = [CCPhysicsBody
-                        bodyWithRect: boundingBody
-                        cornerRadius: 0];
-    self.physicsBody.allowsRotation    = FALSE;
-    self.physicsBody.affectedByGravity = TRUE;
-    self.physicsBody.collisionType     = collisionType;
+    [self attachBoundingBody:boundingBody withCollisionType:collisionType withPhysicsType:physicsType];
     
     return self;
 }
-
 
 
 /*

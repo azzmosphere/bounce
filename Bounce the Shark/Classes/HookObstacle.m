@@ -10,8 +10,13 @@
 
 @implementation HookObstacle
 
-static const int FRAMES  = 2;
+static const int     FRAMES  = 2;
+static const CGFloat HOOK_SZ = 0.2f;
 
+/*
+ *==============================================================================
+ *==============================================================================
+ */
 -(id) initWithImage
 {
     self = [super initWithImageNamed:@"hook.png"];
@@ -23,8 +28,17 @@ static const int FRAMES  = 2;
                withBoundingBody: CGRectMake(CGPointZero.x,
                                             CGPointZero.y,
                                             self.contentSizeInPoints.width,
-                                            self.contentSizeInPoints.height / FRAMES - 190)];
+                                            (self.contentSizeInPoints.height / FRAMES) * HOOK_SZ)
+                withPhysicsType: CCPhysicsBodyTypeStatic];
     return self;
 }
 
+/*
+ *==============================================================================
+ *==============================================================================
+ */
+-(CGFloat) getContentHeight
+{
+    return self.contentSizeInPoints.height / FRAMES;
+}
 @end
