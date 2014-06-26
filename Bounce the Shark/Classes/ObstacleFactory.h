@@ -22,6 +22,14 @@
 
 // Large coral random seeds,  set the CORAL_UPPER_SEED higher to make
 // the objects appear less frequently on the screen
+@property (nonatomic, assign) int coral_lg_upper_seed;
+@property (nonatomic, assign) int coral_lg_lower_seed;
+
+@property (nonatomic, assign) int coral_sm_upper_seed;
+@property (nonatomic, assign) int coral_sm_lower_seed;
+
+@property (nonatomic, assign) int hook_upper_seed;
+@property (nonatomic, assign) int hook_lower_seed;
 
 //-(id) initWith :(CCPhysicsNode *) physicsNode
 //           ctl :(CCNode *) ctl;
