@@ -26,6 +26,9 @@
 @synthesize coral_sm_upper_seed = coral_sm_upper_seed;
 @synthesize coral_sm_lower_seed = coral_sm_lower_seed;
 
+@synthesize hook_upper_seed = hook_upper_seed;
+@synthesize hook_lower_seed = hook_lower_seed;
+
 const static int CORAL_LG_UPPER_SEED = 4;
 const static int CORAL_LG_LOWER_SEED = 1;
 
@@ -33,8 +36,8 @@ const static int CORAL_LG_LOWER_SEED = 1;
 const static int CORAL_SM_UPPER_SEED = 3;
 const static int CORAL_SM_LOWER_SEED = 1;
 
-//const static int HOOK_UPPER_SEED = 3;
-//const static int HOOK_LOWER_SEED = 1;
+const static int HOOK_UPPER_SEED = 3;
+const static int HOOK_LOWER_SEED = 1;
 
 const static int RAND_TARGET = 2;
 
@@ -54,10 +57,12 @@ const static int RAND_TARGET = 2;
     firstObstacleXpos = [[CCDirector sharedDirector] viewSize].width +
          ([[CCDirector sharedDirector] viewSize].width * 0.05);
     
-    self.coral_lg_upper_seed = CORAL_LG_UPPER_SEED;
-    self.coral_lg_lower_seed = CORAL_LG_LOWER_SEED;
-    self.coral_sm_lower_seed = CORAL_SM_LOWER_SEED;
-    self.coral_sm_upper_seed = CORAL_SM_UPPER_SEED;
+    coral_lg_upper_seed = CORAL_LG_UPPER_SEED;
+    coral_lg_lower_seed = CORAL_LG_LOWER_SEED;
+    coral_sm_lower_seed = CORAL_SM_LOWER_SEED;
+    coral_sm_upper_seed = CORAL_SM_UPPER_SEED;
+    hook_lower_seed     = HOOK_LOWER_SEED;
+    hook_upper_seed     = HOOK_UPPER_SEED;
     
      _obstacles = [NSMutableArray array];
     return self;
@@ -109,26 +114,32 @@ const static int RAND_TARGET = 2;
  *==============================================================================
  *==============================================================================
  */
--(BOOL) setUpCoralLarge : (CGFloat) xpoint
+-(Obstacle *) setUpCoralLarge : (CGFloat) xpoint
 {
     BOOL rv = [self genObs : self.coral_lg_lower_seed withUpper : self.coral_lg_upper_seed];
-    if(rv)
+    Obstacle *obstacle = nil;
+    if(rv){
+        obstacle = [[CoralLargeObstacle alloc] initWithImageAndPhysicsBody];
         [self setUpGroundObstacle: xpoint
-                     withObstacle: [[CoralLargeObstacle alloc] initWithImageAndPhysicsBody]];
-    return rv;
+                     withObstacle: obstacle];
+    }
+    return obstacle;
 }
 
 /*
  *==============================================================================
  *==============================================================================
  */
--(BOOL) setUpCoralSmall : (CGFloat) xpoint
+-(Obstacle *) setUpCoralSmall : (CGFloat) xpoint
 {
     BOOL rv = [self genObs : self.coral_lg_lower_seed withUpper : self.coral_lg_upper_seed];
-    if(rv)
-         [self setUpGroundObstacle: xpoint
-                 withObstacle: [[CoralSmallObstacle alloc] initWithImageAndPhysicsBody]];
-    return rv;
+    Obstacle *obstacle = nil;
+    if(rv){
+        obstacle = [[CoralSmallObstacle alloc] initWithImageAndPhysicsBody];
+        [self setUpGroundObstacle: xpoint
+                 withObstacle: obstacle];
+    }
+    return obstacle;
 }
 
 /*

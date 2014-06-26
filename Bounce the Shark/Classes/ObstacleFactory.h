@@ -31,6 +31,7 @@
 @property (nonatomic, assign) int hook_upper_seed;
 @property (nonatomic, assign) int hook_lower_seed;
 
+
 //-(id) initWith :(CCPhysicsNode *) physicsNode
 //           ctl :(CCNode *) ctl;
 
