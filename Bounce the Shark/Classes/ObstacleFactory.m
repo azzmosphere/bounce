@@ -15,6 +15,8 @@
     BOOL            _firstObstacleSet;
     // Mutable array.
     NSMutableArray *_obstacles;
+    
+    NSArray        *_selArray;
 }
 
 @synthesize physicsWorld      = physicsWorld;
@@ -29,6 +31,11 @@
 @synthesize hook_upper_seed = hook_upper_seed;
 @synthesize hook_lower_seed = hook_lower_seed;
 
+@synthesize coin_upper_seed = coin_upper_seed;
+@synthesize coin_lower_seed = coin_lower_seed;
+
+@synthesize gameScene = gameScene;
+
 const static int CORAL_LG_UPPER_SEED = 4;
 const static int CORAL_LG_LOWER_SEED = 1;
 
@@ -36,10 +43,18 @@ const static int CORAL_LG_LOWER_SEED = 1;
 const static int CORAL_SM_UPPER_SEED = 3;
 const static int CORAL_SM_LOWER_SEED = 1;
 
-const static int HOOK_UPPER_SEED = 3;
+const static int HOOK_UPPER_SEED = 4;
 const static int HOOK_LOWER_SEED = 1;
 
+const static int COIN_UPPER_SEED = 3;
+const static int COIN_LOWER_SEED = 1;
+
+// The target value for randomly generated obstacles
 const static int RAND_TARGET = 2;
+
+// Maximum obstacles that can appear on screen at once,  this includes
+// obstacles that are just off screen.
+const static int OBSTACLES_ON_SCREEN = 20;
 
 
 -(id) initWithPhysicsNode : (CCPhysicsNode *) world
@@ -63,8 +78,11 @@ const static int RAND_TARGET = 2;
     coral_sm_upper_seed = CORAL_SM_UPPER_SEED;
     hook_lower_seed     = HOOK_LOWER_SEED;
     hook_upper_seed     = HOOK_UPPER_SEED;
+    coin_lower_seed     = COIN_LOWER_SEED;
+    coin_upper_seed     = COIN_UPPER_SEED;
     
      _obstacles = [NSMutableArray array];
+
     return self;
 }
 
@@ -76,18 +94,42 @@ const static int RAND_TARGET = 2;
 -(void) updateObstacles
 {
     if(_debugTmpVar){
+        CGSize  viewSize = [[CCDirector sharedDirector] viewSize];
+        CGFloat       xpoint = 0.f;
+        Coin         *coin   = nil;
+        HookObstacle *hook   = [self setUpHookObstacle : xpoint];
+        Obstacle     *obstacle = nil;
         if(!_firstObstacleSet){
-            Obstacle *obstacle = [self setUpHookObstacle : firstObstacleXpos];
-            if(obstacle != nil)
-                [_obstacles addObject:obstacle];
-            [self setUpCoralLarge   : firstObstacleXpos];
+            xpoint = firstObstacleXpos;
+            _firstObstacleSet = TRUE;
+        }
             
-            [self setUpHookObstacle : firstObstacleXpos + firstObstacleXpos];
-            [self setUpCoralSmall   : firstObstacleXpos + firstObstacleXpos];
+        if(hook != nil)
+            [_obstacles addObject:hook];
+        else {
+            coin = [self setUpCoin:xpoint withYoint:viewSize.height * 0.8f];
+            if(coin != nil)
+                 [_obstacles addObject:coin];
+        }
             
-            _debugTmpVar =FALSE;
+        if( (obstacle = [self setUpCoralLarge   : xpoint]) != nil )
+            [_obstacles addObject:obstacle];
+            
+        else if ( (obstacle = [self setUpCoralSmall : xpoint]) != nil )
+            [_obstacles addObject:obstacle];
+        else if (coin == nil) {
+            coin = [self setUpCoin:xpoint withYoint:viewSize.height * 0.1f];
+            if(coin != nil)
+                [_obstacles addObject:coin];
         }
         
+        if( (hook != nil && coin == nil) && (viewSize.height -
+        (hook.contentSizeInPoints.height + hook.position.y)) > viewSize.height * 0.1f ){
+            coin = [self setUpCoin:xpoint withYoint:viewSize.height * 0.9f];
+            if(coin != nil)
+                [_obstacles addObject:coin];
+        }
+        _debugTmpVar =FALSE;
     }
 }
 
@@ -95,17 +137,29 @@ const static int RAND_TARGET = 2;
  *==============================================================================
  *==============================================================================
  */
--(Obstacle *) setUpHookObstacle : (CGFloat) xpoint
+-(void) removeObstacles
 {
-    HookObstacle *obstacle = [[HookObstacle alloc] initWithImage];
-    [self.physicsWorld addChild: [obstacle getSpriteSheet]];
     
-    CGFloat ypoint = [[CCDirector sharedDirector] viewSize].height
+}
+
+
+/*
+ *==============================================================================
+ *==============================================================================
+ */
+-(HookObstacle *) setUpHookObstacle : (CGFloat) xpoint
+{
+    HookObstacle *obstacle = nil;
+    
+    if([self genObs:hook_lower_seed withUpper:hook_upper_seed]){
+        obstacle = [[HookObstacle alloc] initWithImage];
+        [self.physicsWorld addChild: [obstacle getSpriteSheet]];
+    
+        CGFloat ypoint = [[CCDirector sharedDirector] viewSize].height
             - [obstacle getContentHeight];
-    [obstacle setPosition:ccp(xpoint,ypoint)];
-    [obstacle setAnchorPoint:CGPointZero];
-        
-    _firstObstacleSet = FALSE;
+        [obstacle setPosition:ccp(xpoint,ypoint)];
+        [obstacle setAnchorPoint:CGPointZero];
+    }
     
     return obstacle;
 }
@@ -132,7 +186,7 @@ const static int RAND_TARGET = 2;
  */
 -(Obstacle *) setUpCoralSmall : (CGFloat) xpoint
 {
-    BOOL rv = [self genObs : self.coral_lg_lower_seed withUpper : self.coral_lg_upper_seed];
+    BOOL rv = [self genObs : coral_lg_lower_seed withUpper : coral_lg_upper_seed];
     Obstacle *obstacle = nil;
     if(rv){
         obstacle = [[CoralSmallObstacle alloc] initWithImageAndPhysicsBody];
@@ -144,6 +198,24 @@ const static int RAND_TARGET = 2;
 
 /*
  *==============================================================================
+ *==============================================================================
+ */
+-(Coin *) setUpCoin : (CGFloat) xpoint  withYoint : (CGFloat) ypoint
+{
+    BOOL rv = [self genObs : coin_lower_seed withUpper : coin_upper_seed];
+    Coin *obstacle = nil;
+    if(rv){
+        obstacle = [[Coin alloc] initWithImage];
+        [obstacle setPosition:ccp(xpoint,ypoint)];
+        [obstacle setAnchorPoint:CGPointZero];
+        [physicsWorld addChild:obstacle];
+    }
+    return obstacle;
+}
+
+/*
+ *==============================================================================
+ * Return true when a obstacle should be generated.
  *==============================================================================
  */
 -(BOOL) genObs : (int) lower withUpper : (int) upper

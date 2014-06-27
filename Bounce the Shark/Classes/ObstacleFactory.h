@@ -11,6 +11,7 @@
 #import "CoralLargeObstacle.h"
 #import "HookObstacle.h"
 #import "Coin.h"
+#import "CCScene.h"
 #import "CCNode.h"
 
 @interface ObstacleFactory : NSObject
@@ -30,6 +31,11 @@
 
 @property (nonatomic, assign) int hook_upper_seed;
 @property (nonatomic, assign) int hook_lower_seed;
+
+@property (nonatomic, assign) int coin_upper_seed;
+@property (nonatomic, assign) int coin_lower_seed;
+
+@property (nonatomic, assign) CCScene *gameScene;
 
 
 //-(id) initWith :(CCPhysicsNode *) physicsNode

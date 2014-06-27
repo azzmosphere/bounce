@@ -93,6 +93,7 @@ static const BOOL DEBUG_MODE = TRUE;
     _physicsWorld.collisionDelegate = self;
     _obstacleFactory = [[ObstacleFactory alloc]
              initWithPhysicsNode: _physicsWorld];
+    _obstacleFactory.gameScene = self;
     
     return self;
 }
@@ -290,12 +291,14 @@ static const BOOL DEBUG_MODE = TRUE;
                           coin:(Coin *)coin {
     NSLog(@"Coin Hit");
     
-    [_physicsWorld removeChild: coin];
+    [_physicsWorld removeChild:coin];
     [_shark positiveCollision];
     
     // Update the transition manager at this point,  that we have just hit
     // a coint.  It will be up to the transition manager to decide what happens
     // in terms of benefit for hitting a coin.
+    
+    [coin setPosition: CGPointZero];
     
     return TRUE;
 }

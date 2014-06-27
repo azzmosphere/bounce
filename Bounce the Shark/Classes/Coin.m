@@ -13,13 +13,13 @@
 -(id) initWithImage
 {
     self = [super initWithImageNamed:@"coin.png"];
-    self = [super initWithImageNamedAndPhysics:@"coin.png"
-                               withBoundingBox:CGRectMake(
-                                                          CGPointZero.x,
-                                                          CGPointZero.y,
-                                                          self.contentSizeInPoints.width,
-                                                          self.contentSizeInPoints.height)
-                             withCollisionType: @"coin"];
+    [self attachBoundingBody : CGRectMake(
+                                          CGPointZero.x,
+                                          CGPointZero.y,
+                                          self.contentSizeInPoints.width,
+                                          self.contentSizeInPoints.height)
+           withCollisionType : @"coin"
+             withPhysicsType : CCPhysicsBodyTypeStatic];
     
     return self;
 }
