@@ -13,20 +13,23 @@
 const static CGFloat SHARK_X_PULSE       = 0.0f;
 const static CGFloat SHARK_IMPULSE_SPEED = 150.0f;
 const static int     FRAMES              = 3;
-const static int     RECT_OFFSET         = 20;
+const static CGFloat RECT_OFFSET         = 0.2f;
+const static CGFloat RECT_OFFSET2        = 0.1f;
 
 -(id) initWithImage
 {
-   self = [super initWithImageNamed:@"sharkhero.png"];
-   self = [super initWithImage:@"sharkhero.png"
+    self = [super initWithImageNamed:@"sharkhero.png"];
+    CGFloat rectOffset  = self.contentSizeInPoints.height * RECT_OFFSET;
+    CGFloat rectOffset2 = self.contentSizeInPoints.height * RECT_OFFSET2;
+    self = [super initWithImage:@"sharkhero.png"
                       withPlist:@"sharkhero.plist"
                  withFrameCount: FRAMES
                   withSprintStr:@"shark0%d-ipad.png"
               withCollisionType:@"hero"
-               withBoundingBody: CGRectMake(CGPointZero.x + RECT_OFFSET,
-                                            CGPointZero.y + RECT_OFFSET,
-                                            self.contentSizeInPoints.width / FRAMES,
-                                            self.contentSizeInPoints.height)];
+               withBoundingBody: CGRectMake(CGPointZero.x + rectOffset + rectOffset2,
+                                            CGPointZero.y + rectOffset,
+                                            (self.contentSizeInPoints.width / FRAMES)  - rectOffset,
+                                            self.contentSizeInPoints.height - (rectOffset + rectOffset2))];
     return self;
 }
 

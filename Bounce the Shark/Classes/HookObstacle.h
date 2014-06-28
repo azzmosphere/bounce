@@ -12,5 +12,6 @@
 
 -(id)      initWithImage;
 -(CGFloat) getContentHeight;
+-(CGFloat) getMinContentHeight;
 
 @end

@@ -37,7 +37,7 @@
 }
 
 // DEBUG flag, when set to on will draw frames around physics object
-static const BOOL DEBUG_MODE = TRUE;
+static const BOOL DEBUG_MODE = FALSE;
 
 
 // -----------------------------------------------------------------------

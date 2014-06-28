@@ -41,4 +41,13 @@ static const CGFloat HOOK_SZ = 0.2f;
 {
     return self.contentSizeInPoints.height / FRAMES;
 }
+
+/*
+ *==============================================================================
+ *==============================================================================
+ */
+-(CGFloat) getMinContentHeight
+{
+    return (self.contentSizeInPoints.height / FRAMES) * 0.6;
+}
 @end

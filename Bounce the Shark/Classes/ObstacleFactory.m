@@ -9,14 +9,15 @@
 #import "ObstacleFactory.h"
 
 @implementation ObstacleFactory {
-    BOOL            _debugTmpVar;
     
     // Set true when first obstacle is set.
     BOOL            _firstObstacleSet;
+    
     // Mutable array.
     NSMutableArray *_obstacles;
     
-    NSArray        *_selArray;
+    CGFloat         _xWidth;
+    CGFloat         _xpos;
 }
 
 @synthesize physicsWorld      = physicsWorld;
@@ -36,7 +37,7 @@
 
 @synthesize gameScene = gameScene;
 
-const static int CORAL_LG_UPPER_SEED = 4;
+const static int CORAL_LG_UPPER_SEED = 6;
 const static int CORAL_LG_LOWER_SEED = 1;
 
 
@@ -54,7 +55,7 @@ const static int RAND_TARGET = 2;
 
 // Maximum obstacles that can appear on screen at once,  this includes
 // obstacles that are just off screen.
-const static int OBSTACLES_ON_SCREEN = 20;
+const static int OBSTACLES_ON_SCREEN = 10;
 
 
 -(id) initWithPhysicsNode : (CCPhysicsNode *) world
@@ -63,8 +64,6 @@ const static int OBSTACLES_ON_SCREEN = 20;
         self = nil;
     
     self.physicsWorld = world;
-    
-    _debugTmpVar = TRUE;
     
     _firstObstacleSet = FALSE;
     
@@ -86,16 +85,46 @@ const static int OBSTACLES_ON_SCREEN = 20;
     return self;
 }
 
+/*
+ *==============================================================================
+ * This method is called for each update from the game scene,  the first 
+ * obstacle is allways a large coral,  this is used to compute the size and
+ * padding for all consequent obstacles.
+ *
+ * After that obstacles will be generated using the xWidth.
+ *==============================================================================
+ */
+-(void) updateObstacles
+{
+    if (!_firstObstacleSet){
+        Obstacle *obstacle = [[CoralSmallObstacle alloc] initWithImageAndPhysicsBody];
+        _xWidth   = obstacle.contentSizeInPoints.width;
+        _xpos = firstObstacleXpos;
+        [self setUpGroundObstacle: _xpos
+                     withObstacle: obstacle];
+        _firstObstacleSet = TRUE;
+        
+    }
+    
+    // Generate obstacles if we have not filled up the array of obstacles on
+    // screen,  this is a soft ceiling.
+    else if([_obstacles count] < OBSTACLES_ON_SCREEN){
+        _xpos += _xWidth;
+        [self spawnObstacles : _xpos withUpper : (_xpos + _xWidth)];
+    }
+    [self removeObstacles];
+}
+
 
 /*
  *==============================================================================
  *==============================================================================
  */
--(void) updateObstacles
+-(void) spawnObstacles : (CGFloat) lower
+             withUpper : (CGFloat) upper
 {
-    if(_debugTmpVar){
         CGSize  viewSize = [[CCDirector sharedDirector] viewSize];
-        CGFloat       xpoint = 0.f;
+        CGFloat       xpoint = lower;
         Coin         *coin   = nil;
         HookObstacle *hook   = [self setUpHookObstacle : xpoint];
         Obstacle     *obstacle = nil;
@@ -129,8 +158,6 @@ const static int OBSTACLES_ON_SCREEN = 20;
             if(coin != nil)
                 [_obstacles addObject:coin];
         }
-        _debugTmpVar =FALSE;
-    }
 }
 
 /*
@@ -139,6 +166,26 @@ const static int OBSTACLES_ON_SCREEN = 20;
  */
 -(void) removeObstacles
 {
+    NSMutableArray *moveObstacles = [NSMutableArray array];
+    
+    // Remove obstacles that have left screen.
+    for(Obstacle *obstacle in _obstacles){
+        CGPoint obstacleWorldPosition =
+        [physicsWorld convertToWorldSpace:obstacle.position];
+        CGPoint obstacleScreenPosition =
+        [gameScene convertToNodeSpace:obstacleWorldPosition];
+        
+        if (obstacleScreenPosition.x < -obstacle.contentSize.width)
+            [moveObstacles addObject:obstacle];
+        
+    }
+    
+    for(Obstacle *obstacleToRemove in moveObstacles){
+        NSLog(@"Removing obstacle");
+        [obstacleToRemove removeFromParent];
+        [_obstacles removeObject:obstacleToRemove];
+
+    }
     
 }
 
@@ -155,9 +202,17 @@ const static int OBSTACLES_ON_SCREEN = 20;
         obstacle = [[HookObstacle alloc] initWithImage];
         [self.physicsWorld addChild: [obstacle getSpriteSheet]];
     
-        CGFloat ypoint = [[CCDirector sharedDirector] viewSize].height
+        int lower = [[CCDirector sharedDirector] viewSize].height
             - [obstacle getContentHeight];
-        [obstacle setPosition:ccp(xpoint,ypoint)];
+        int upper = lower + [obstacle getMinContentHeight];        
+        int ypoint = lower + arc4random() % (upper - lower);
+        
+        int xupper = (int)roundf(xpoint) + (int)round(obstacle.contentSizeInPoints.width * 3);
+        int xlower = (int)roundf(xpoint);
+        int x      = xlower + arc4random() % (xupper - xlower);
+        
+        NSLog(@"Hook generated with xlower:%d x xupper:%d",xlower, xupper);
+        [obstacle setPosition:ccp(x,ypoint)];
         [obstacle setAnchorPoint:CGPointZero];
     }
     
@@ -206,7 +261,11 @@ const static int OBSTACLES_ON_SCREEN = 20;
     Coin *obstacle = nil;
     if(rv){
         obstacle = [[Coin alloc] initWithImage];
-        [obstacle setPosition:ccp(xpoint,ypoint)];
+        int lower   = roundf(xpoint);
+        int upper   = lower + roundf(obstacle.contentSizeInPoints.width * 3);
+        int rxpoint = lower + arc4random() % (upper - lower);
+                             
+        [obstacle setPosition:ccp(rxpoint,ypoint)];
         [obstacle setAnchorPoint:CGPointZero];
         [physicsWorld addChild:obstacle];
     }
