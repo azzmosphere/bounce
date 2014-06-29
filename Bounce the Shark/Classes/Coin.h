@@ -10,6 +10,8 @@
 
 @interface Coin : Obstacle
 
--(id) initWithImage;
+@property (nonatomic, assign) NSUInteger scoreweight;
+
+-(id)         initWithImage;
 
 @end

@@ -32,8 +32,15 @@
     ObstacleFactory *_obstacleFactory;
     
     CGFloat         scrollSpeed;
-    
+    NSUInteger      _metresTraveled;
     CGPoint         _heroOrigPos;
+    
+    NSUInteger      _score;
+    CCLayoutBox    *_layoutBox;
+    
+    CCLabelTTF     *_scoreLbl;
+    CCLabelTTF     *_totalTimeLbl;
+    CCTime          _totalTime;
 }
 
 // DEBUG flag, when set to on will draw frames around physics object
@@ -49,7 +56,11 @@ static const BOOL DEBUG_MODE = FALSE;
     return [[self alloc] init];
 }
 
-
+/*
+ *==============================================================================
+ * Constructor
+ *==============================================================================
+ */
 -(id) init
 {
     self = [super init];
@@ -82,7 +93,7 @@ static const BOOL DEBUG_MODE = FALSE;
     
     [_physicsWorld addChild: [_shark getSpriteSheet]];
     CGSize viewSize = [[CCDirector sharedDirector] viewSize];
-    _shark.position = ccp(viewSize.width * 0.35f, viewSize.height/2);
+    _shark.position = ccp(viewSize.width * 0.2f, viewSize.height/2);
     
     
     _physicsWorld.gravity = ccp(0,-50);
@@ -95,7 +106,58 @@ static const BOOL DEBUG_MODE = FALSE;
              initWithPhysicsNode: _physicsWorld];
     _obstacleFactory.gameScene = self;
     
+    [self initDisplayBoard];
+    
+    // one meter is the width of the shark object.
+    _metresTraveled = 0;
+    _totalTime      = 0.f;
+
     return self;
+}
+
+/*
+ *==============================================================================
+ * Create the initilisation board
+ *==============================================================================
+ */
+-(void) initDisplayBoard
+{
+    CGSize viewSize = [[CCDirector sharedDirector] viewSize];
+    NSDictionary   *attrsDictionary = [NSDictionary
+                                       dictionaryWithObject:[UIFont fontWithName:@"Arial"
+                                                                            size:20.0f]
+                                                    forKey:NSFontAttributeName];
+    _layoutBox = [[CCLayoutBox alloc] init];
+    _layoutBox.direction = CCLayoutBoxDirectionHorizontal;
+    _layoutBox.spacing = 5.f;
+    
+    [_layoutBox setPosition:ccp(viewSize.width * 0.90, viewSize.height * 0.95)];
+    
+    CCSprite *coinlbl = [[CCSprite alloc] initWithImageNamed:@"coinlbl.png"];
+    [_layoutBox addChild:coinlbl];
+    
+    _scoreLbl = [[CCLabelTTF alloc] initWithAttributedString:
+                            [[NSAttributedString alloc] initWithString:@"0" attributes:attrsDictionary]
+                            ];
+    _scoreLbl.anchorPoint = CGPointZero;
+    [_layoutBox addChild:_scoreLbl];
+
+    NSDictionary   *attrsDict = [NSDictionary
+                                       dictionaryWithObject:[UIFont fontWithName:@"Courier New"
+                                                                            size:20.0f]
+                                       forKey:NSFontAttributeName];
+    CCLabelTTF *timeLbl = [[CCLabelTTF alloc] initWithAttributedString:
+                          [[NSAttributedString alloc] initWithString:@"T" attributes:attrsDict]
+    ];
+    timeLbl.colorRGBA = [CCColor colorWithRed:0.0 green:0.0 blue:0.0];
+    [_layoutBox addChild:timeLbl];
+    
+    _totalTimeLbl = [[CCLabelTTF alloc] initWithAttributedString:
+                     [[NSAttributedString alloc] initWithString:@"0" attributes:attrsDictionary]
+                     ];
+    [_layoutBox addChild:_totalTimeLbl];
+    [self addChild:_layoutBox];
+
 }
 
 
@@ -110,6 +172,11 @@ static const BOOL DEBUG_MODE = FALSE;
          withArray:_floor];
 }
 
+/*
+ *==============================================================================
+ * Create the floor tiles
+ *==============================================================================
+ */
 -(CCSprite *) createFloorTile : (CGFloat) xpoint
 {
     CCSprite *tile = [self createClamp:@"oceanfloortile.png"
@@ -129,6 +196,11 @@ static const BOOL DEBUG_MODE = FALSE;
          withArray : _roof];
 }
 
+/*
+ *==============================================================================
+ * Create roof tile
+ *==============================================================================
+ */
 -(CCSprite *) createRoofTile : (CGFloat) xpoint
 {
     CGSize viewSize = [[CCDirector sharedDirector] viewSize];
@@ -180,6 +252,11 @@ static const BOOL DEBUG_MODE = FALSE;
     return tile;
 }
 
+/*
+ *==============================================================================
+ * Create the clamps
+ *==============================================================================
+ */
 -(NSArray *) setClamp : (CCSprite *) clamp1
       withClamp2 : (CCSprite *) clamp2
        withArray : (NSArray *)  array
@@ -193,7 +270,11 @@ static const BOOL DEBUG_MODE = FALSE;
     return array;
 }
 
-
+/*
+ *==============================================================================
+ * Update delegate
+ *==============================================================================
+ */
 -(void) update:(CCTime)delta
 {
     [self setCameraPosition : delta];
@@ -201,19 +282,37 @@ static const BOOL DEBUG_MODE = FALSE;
     [self updateScrollingImage: _floor  withDebugTitle : @"_floor"];
     [self updateScrollingImage: _roof   withDebugTitle : @"_roof"];
     
+    
     for (CCSprite *bg in _bg){
         [bg setPosition:CGPointMake(bg.position.x - 1, bg.position.y)];
         
-        if(bg.positionInPoints.x <= (-1 * bg.contentSizeInPoints.width)){
-            [bg setPosition:ccp(bg.contentSize.width,bg.position.y)];
-            bg.position = ccp(bg.position.x + 2 * bg.contentSize.width, bg.position.y);
+        if(bg.position.x <= (-1 * bg.contentSize.width)){
+            NSLog(@"background screen: position = %f", bg.position.x);
+            [bg setPosition: ccp(bg.position.x + 2 * bg.contentSize.width, bg.position.y)];
+            NSLog(@"background screen: position = %f", bg.position.x);
         }
     }
     
     [_obstacleFactory updateObstacles];
+    _totalTime += delta;
+    NSInteger metresTraveled = (NSInteger) roundf((_totalTime * 100)  / _shark.contentSize.width );
+    
+    // Update the meters travelled only whne it has actually changed, this is
+    // to stop drawing on the screen to regularly.
+    if(metresTraveled != _metresTraveled){
+        _metresTraveled = metresTraveled;
+        [_totalTimeLbl setFontName:@"Courier New"];
+        [_totalTimeLbl setFontSize:20.0f];
+        [_totalTimeLbl setString:[NSString stringWithFormat:@"%lu",(unsigned long)_metresTraveled]];
+    }
 
 }
 
+/*
+ *==============================================================================
+ * Update the scrolling images. This rotates the  
+ *==============================================================================
+ */
 -(void) updateScrollingImage : (NSArray *) clamps
               withDebugTitle : (NSString *) debugString;
 {
@@ -262,7 +361,8 @@ static const BOOL DEBUG_MODE = FALSE;
  */
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair
                           hero:(SharkHero *)hero
-                          coral_small:(CoralSmallObstacle *)coral {
+                          coral_small:(CoralSmallObstacle *)coral
+{
     NSLog(@"Coral Hit");
     [_shark neutralCollision];
     
@@ -275,7 +375,8 @@ static const BOOL DEBUG_MODE = FALSE;
  */
 -(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair
                           hero:(SharkHero *)hero
-                   coral_large:(CoralLargeObstacle *)coral {
+                   coral_large:(CoralLargeObstacle *)coral
+{
     NSLog(@"Coral Hit");
     [_shark neutralCollision];
     
@@ -293,12 +394,20 @@ static const BOOL DEBUG_MODE = FALSE;
     
     [_physicsWorld removeChild:coin];
     [_shark positiveCollision];
+    _score += coin.scoreweight;
+    
+    
+    NSLog(@"score %lu", (unsigned long)_score);
+    [_scoreLbl setFontName:@"Ariel"];
+    [_scoreLbl setFontSize:20.0f];
+    [_scoreLbl setString:[NSString stringWithFormat:@"%lu",(unsigned long)_score]];
+
     
     // Update the transition manager at this point,  that we have just hit
     // a coint.  It will be up to the transition manager to decide what happens
     // in terms of benefit for hitting a coin.
     
-    [coin setPosition: CGPointZero];
+
     
     return TRUE;
 }

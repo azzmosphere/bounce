@@ -10,6 +10,8 @@
 
 @implementation Coin
 
+@synthesize scoreweight = scoreweight;
+
 -(id) initWithImage
 {
     self = [super initWithImageNamed:@"coin.png"];
@@ -20,8 +22,9 @@
                                           self.contentSizeInPoints.height)
            withCollisionType : @"coin"
              withPhysicsType : CCPhysicsBodyTypeStatic];
-    
+    scoreweight = 1;
     return self;
 }
+
 
 @end

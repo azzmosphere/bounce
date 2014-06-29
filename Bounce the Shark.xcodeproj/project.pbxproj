@@ -35,6 +35,7 @@
 		23A21EC7195A2A5B000F1C5D /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A21EC4195A2A5B000F1C5D /* coin.png */; };
 		23A21ECA195A2A8E000F1C5D /* Coin.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A21EC9195A2A8E000F1C5D /* Coin.m */; };
 		23A80395195963FC00BDE767 /* AnimObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A80394195963FC00BDE767 /* AnimObstacle.m */; };
+		23C18CCE195F0ED800CBC49C /* coinlbl-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C18CCD195F0ED800CBC49C /* coinlbl-ipad.png */; };
 		23E2ACB31951968600B88DFD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB21951968600B88DFD /* QuartzCore.framework */; };
 		23E2ACB51951968600B88DFD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB41951968600B88DFD /* OpenGLES.framework */; };
 		23E2ACB71951968600B88DFD /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E2ACB61951968600B88DFD /* OpenAL.framework */; };
@@ -286,6 +287,7 @@
 		23A21EC9195A2A8E000F1C5D /* Coin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Coin.m; path = Classes/Coin.m; sourceTree = "<group>"; };
 		23A80393195963FC00BDE767 /* AnimObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimObstacle.h; path = Classes/AnimObstacle.h; sourceTree = "<group>"; };
 		23A80394195963FC00BDE767 /* AnimObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimObstacle.m; path = Classes/AnimObstacle.m; sourceTree = "<group>"; };
+		23C18CCD195F0ED800CBC49C /* coinlbl-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coinlbl-ipad.png"; sourceTree = "<group>"; };
 		23E2ACAF1951968600B88DFD /* Bounce the Shark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bounce the Shark.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E2ACB21951968600B88DFD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		23E2ACB41951968600B88DFD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -809,6 +811,7 @@
 				238D144919582A82004AA6BD /* hook-ipadhd.png */,
 				238D144A19582A82004AA6BD /* hook.plist */,
 				238D144B19582A82004AA6BD /* hook.png */,
+				23C18CCD195F0ED800CBC49C /* coinlbl-ipad.png */,
 				23E2ACD41951968600B88DFD /* Icons */,
 			);
 			name = Resources;
@@ -1751,6 +1754,7 @@
 				23E2AEB41951968800B88DFD /* ChangeLog in Resources */,
 				238D145119582A82004AA6BD /* hook.png in Resources */,
 				236442EC195717180038C996 /* coral-2-ipad.png in Resources */,
+				23C18CCE195F0ED800CBC49C /* coinlbl-ipad.png in Resources */,
 				23E2ACF31951968600B88DFD /* iTunesArtwork@2x in Resources */,
 				238D145019582A82004AA6BD /* hook.plist in Resources */,
 			);
