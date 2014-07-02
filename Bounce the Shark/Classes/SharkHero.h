@@ -16,5 +16,6 @@
 -(void) screenTouched;
 -(void) neutralCollision;
 -(void) positiveCollision;
+-(void) negativeCollision;
 
 @end

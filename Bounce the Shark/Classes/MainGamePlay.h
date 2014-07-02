@@ -11,14 +11,14 @@
 #import "CCPhysicsNode.h"
 #import "CCPhysicsBody.h"
 #import "ObstacleFactory.h"
+#import "SceneManager.h"
 #import "CCScene.h"
 
 @class SharkHero;
 
 @interface MainGamePlay : CCScene <CCPhysicsCollisionDelegate>
 
-+ (MainGamePlay *)scene;
-
--(id) init;
+-(id)           init   : (CGFloat) scrollSpeed;
++(MainGamePlay *)scene : (CGFloat) scrollSpeed;
 
 @end

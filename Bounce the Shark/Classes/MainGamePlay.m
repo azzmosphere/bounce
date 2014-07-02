@@ -31,7 +31,7 @@
     
     ObstacleFactory *_obstacleFactory;
     
-    CGFloat         scrollSpeed;
+    CGFloat         _scrollSpeed;
     NSUInteger      _metresTraveled;
     CGPoint         _heroOrigPos;
     
@@ -51,9 +51,9 @@ static const BOOL DEBUG_MODE = FALSE;
 #pragma mark - Create & Destroy
 // -----------------------------------------------------------------------
 
-+ (MainGamePlay *)scene
++ (MainGamePlay *)scene : (CGFloat) scrollSpeed
 {
-    return [[self alloc] init];
+    return [[self alloc] init : scrollSpeed];
 }
 
 /*
@@ -61,7 +61,7 @@ static const BOOL DEBUG_MODE = FALSE;
  * Constructor
  *==============================================================================
  */
--(id) init
+-(id) init : (CGFloat) scrollSpeed
 {
     self = [super init];
     if(self == nil)
@@ -97,7 +97,7 @@ static const BOOL DEBUG_MODE = FALSE;
     
     
     _physicsWorld.gravity = ccp(0,-50);
-    scrollSpeed = 80.f;
+    _scrollSpeed = scrollSpeed;
     
     _heroOrigPos = [_physicsWorld convertToWorldSpace: _shark.position];
     
@@ -350,8 +350,8 @@ static const BOOL DEBUG_MODE = FALSE;
         NSLog(@"hero is below thresold : %f",heroPos.x);
     }
     else {
-        _shark.position = ccp(_shark.position.x + (delta * scrollSpeed) -1,_shark.position.y);
-        _physicsWorld.position = ccp(((_physicsWorld.position.x - (scrollSpeed *delta)) + 1), _physicsWorld.position.y);
+        _shark.position = ccp(_shark.position.x + (delta * _scrollSpeed) -1,_shark.position.y);
+        _physicsWorld.position = ccp(((_physicsWorld.position.x - (_scrollSpeed *delta)) + 1), _physicsWorld.position.y);
     }
 }
 
@@ -411,5 +411,22 @@ static const BOOL DEBUG_MODE = FALSE;
     
     return TRUE;
 }
+
+/*
+ *==============================================================================
+ *==============================================================================
+ */
+-(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair
+                          hero:(SharkHero *)hero
+                          hook:(HookObstacle *)hook
+{
+    NSLog(@"Hook Hit");
+    [_shark negativeCollision];
+    
+    [[SceneManager instance] changeScene:BTSHeroDiedScene];
+    
+    return TRUE;
+}
+
 
 @end

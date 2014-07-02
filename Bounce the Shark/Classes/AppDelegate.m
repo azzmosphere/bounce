@@ -8,10 +8,6 @@
 // -----------------------------------------------------------------------
 
 #import "AppDelegate.h"
-//#import "IntroScene.h"
-//#import "HelloWorldScene.h"
-
-#import "MainGamePlay.h"
 
 @implementation AppDelegate
 
@@ -51,8 +47,9 @@
 -(CCScene *)startScene
 {
 	// This method should return the very first scene to be run when your app starts.
-	//return [IntroScene scene];
-    return [MainGamePlay scene];
+
+    return [[SceneManager instance] getScene:BTSMainGameIntroScene];
+    
 }
 
 @end

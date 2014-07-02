@@ -15,6 +15,7 @@
 		231233B81952D83800DE8072 /* SharkHero.m in Sources */ = {isa = PBXBuildFile; fileRef = 231233B71952D83800DE8072 /* SharkHero.m */; };
 		2317C3E81955209E00D16093 /* roof.png in Resources */ = {isa = PBXBuildFile; fileRef = 2317C3E71955209E00D16093 /* roof.png */; };
 		2317C3EB1955B8DC00D16093 /* ObstacleFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2317C3EA1955B8DC00D16093 /* ObstacleFactory.m */; };
+		234F58761960CB1900947570 /* SceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 234F58751960CB1900947570 /* SceneManager.m */; };
 		236442D51956C81E0038C996 /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 236442D41956C81E0038C996 /* Obstacle.m */; };
 		236442D81956CAC50038C996 /* CoralSmallObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 236442D71956CAC50038C996 /* CoralSmallObstacle.m */; };
 		236442E41956D5FA0038C996 /* coral-1-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 236442E11956D5FA0038C996 /* coral-1-ipad.png */; };
@@ -30,6 +31,7 @@
 		238D145019582A82004AA6BD /* hook.plist in Resources */ = {isa = PBXBuildFile; fileRef = 238D144A19582A82004AA6BD /* hook.plist */; };
 		238D145119582A82004AA6BD /* hook.png in Resources */ = {isa = PBXBuildFile; fileRef = 238D144B19582A82004AA6BD /* hook.png */; };
 		238D14541958E7C0004AA6BD /* HookObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = 238D14531958E7C0004AA6BD /* HookObstacle.m */; };
+		23A1708F1962258900542AE1 /* HeroDiedScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 23A1708E1962258900542AE1 /* HeroDiedScene.m */; };
 		23A21EC5195A2A5B000F1C5D /* coin-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A21EC2195A2A5B000F1C5D /* coin-ipad.png */; };
 		23A21EC6195A2A5B000F1C5D /* coin-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A21EC3195A2A5B000F1C5D /* coin-ipadhd.png */; };
 		23A21EC7195A2A5B000F1C5D /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A21EC4195A2A5B000F1C5D /* coin.png */; };
@@ -262,6 +264,8 @@
 		2317C3E71955209E00D16093 /* roof.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roof.png; sourceTree = "<group>"; };
 		2317C3E91955B8DC00D16093 /* ObstacleFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObstacleFactory.h; path = Classes/ObstacleFactory.h; sourceTree = "<group>"; };
 		2317C3EA1955B8DC00D16093 /* ObstacleFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObstacleFactory.m; path = Classes/ObstacleFactory.m; sourceTree = "<group>"; };
+		234F58741960CB1900947570 /* SceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneManager.h; path = Classes/SceneManager.h; sourceTree = "<group>"; };
+		234F58751960CB1900947570 /* SceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SceneManager.m; path = Classes/SceneManager.m; sourceTree = "<group>"; };
 		236442D31956C81E0038C996 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Obstacle.h; path = Classes/Obstacle.h; sourceTree = "<group>"; };
 		236442D41956C81E0038C996 /* Obstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Obstacle.m; path = Classes/Obstacle.m; sourceTree = "<group>"; };
 		236442D61956CAC50038C996 /* CoralSmallObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoralSmallObstacle.h; path = Classes/CoralSmallObstacle.h; sourceTree = "<group>"; };
@@ -280,6 +284,8 @@
 		238D144B19582A82004AA6BD /* hook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hook.png; path = Resources/hook.png; sourceTree = "<group>"; };
 		238D14521958E7C0004AA6BD /* HookObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HookObstacle.h; path = Classes/HookObstacle.h; sourceTree = "<group>"; };
 		238D14531958E7C0004AA6BD /* HookObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HookObstacle.m; path = Classes/HookObstacle.m; sourceTree = "<group>"; };
+		23A1708D1962258900542AE1 /* HeroDiedScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeroDiedScene.h; path = Classes/HeroDiedScene.h; sourceTree = "<group>"; };
+		23A1708E1962258900542AE1 /* HeroDiedScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeroDiedScene.m; path = Classes/HeroDiedScene.m; sourceTree = "<group>"; };
 		23A21EC2195A2A5B000F1C5D /* coin-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin-ipad.png"; sourceTree = "<group>"; };
 		23A21EC3195A2A5B000F1C5D /* coin-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin-ipadhd.png"; sourceTree = "<group>"; };
 		23A21EC4195A2A5B000F1C5D /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
@@ -1641,6 +1647,10 @@
 				23E2AF5B1951968900B88DFD /* AppDelegate.m */,
 				23A21EC8195A2A8E000F1C5D /* Coin.h */,
 				23A21EC9195A2A8E000F1C5D /* Coin.m */,
+				234F58741960CB1900947570 /* SceneManager.h */,
+				234F58751960CB1900947570 /* SceneManager.m */,
+				23A1708D1962258900542AE1 /* HeroDiedScene.h */,
+				23A1708E1962258900542AE1 /* HeroDiedScene.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1801,6 +1811,7 @@
 				23E2AD901951968700B88DFD /* CCScheduler.m in Sources */,
 				23E2AD641951968700B88DFD /* CCParticleExamples.m in Sources */,
 				23E2AE961951968800B88DFD /* CCSlider.m in Sources */,
+				234F58761960CB1900947570 /* SceneManager.m in Sources */,
 				23E2ADD11951968700B88DFD /* CCTMXXMLParser.m in Sources */,
 				23E2AE111951968800B88DFD /* CGPointExtension.m in Sources */,
 				23E2AE9C1951968800B88DFD /* CCTextField.m in Sources */,
@@ -1808,6 +1819,7 @@
 				23E2AE2E1951968800B88DFD /* OALAction.m in Sources */,
 				23E2ADC41951968700B88DFD /* CCTexturePVR.m in Sources */,
 				23E2AED31951968900B88DFD /* CCBAnimationManager.m in Sources */,
+				23A1708F1962258900542AE1 /* HeroDiedScene.m in Sources */,
 				23E2AEB71951968800B88DFD /* mat4stack.c in Sources */,
 				23E2AD561951968700B88DFD /* CCNode.m in Sources */,
 				23E2AD411951968700B88DFD /* CCLabelBMFont.m in Sources */,

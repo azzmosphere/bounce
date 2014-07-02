@@ -62,5 +62,10 @@ const static CGFloat RECT_OFFSET2        = 0.1f;
     // Play any audio for doing something positive.
 }
 
+-(void) negativeCollision
+{
+    // Play any audio for doing something positive.
+}
+
 
 @end
