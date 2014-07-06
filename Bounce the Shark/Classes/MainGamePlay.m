@@ -30,18 +30,18 @@
     SharkHero       *_shark;
     
     ObstacleFactory *_obstacleFactory;
-    
-    CGFloat         _scrollSpeed;
-    NSUInteger      _metresTraveled;
     CGPoint         _heroOrigPos;
-    
     NSUInteger      _score;
     CCLayoutBox    *_layoutBox;
     
     CCLabelTTF     *_scoreLbl;
     CCLabelTTF     *_totalTimeLbl;
-    CCTime          _totalTime;
+
 }
+
+@synthesize _totalTime      = _totalTime;
+@synthesize _scrollSpeed    = _scrollSpeed;
+@synthesize _metresTraveled = _metresTraveled;
 
 // DEBUG flag, when set to on will draw frames around physics object
 static const BOOL DEBUG_MODE = FALSE;
@@ -97,7 +97,7 @@ static const BOOL DEBUG_MODE = FALSE;
     
     
     _physicsWorld.gravity = ccp(0,-50);
-    _scrollSpeed = scrollSpeed;
+    
     
     _heroOrigPos = [_physicsWorld convertToWorldSpace: _shark.position];
     
@@ -106,14 +106,19 @@ static const BOOL DEBUG_MODE = FALSE;
              initWithPhysicsNode: _physicsWorld];
     _obstacleFactory.gameScene = self;
     
-    [self initDisplayBoard];
-    
     // one meter is the width of the shark object.
-    _metresTraveled = 0;
-    _totalTime      = 0.f;
+    SceneManager *smg = [SceneManager instance];
+    _scrollSpeed    = smg.scrollSpeed;
+    _metresTraveled = smg.metresTraveled;
+    _totalTime      = smg.totalTime;
+    _score          = smg.points;
+    
+    [self initDisplayBoard];
 
     return self;
 }
+
+
 
 /*
  *==============================================================================
@@ -137,7 +142,9 @@ static const BOOL DEBUG_MODE = FALSE;
     [_layoutBox addChild:coinlbl];
     
     _scoreLbl = [[CCLabelTTF alloc] initWithAttributedString:
-                            [[NSAttributedString alloc] initWithString:@"0" attributes:attrsDictionary]
+                 [[NSAttributedString alloc] initWithString:[NSString
+                                           stringWithFormat:@"%lu",(unsigned long)_score]
+                                                  attributes:attrsDictionary]
                             ];
     _scoreLbl.anchorPoint = CGPointZero;
     [_layoutBox addChild:_scoreLbl];
@@ -153,7 +160,9 @@ static const BOOL DEBUG_MODE = FALSE;
     [_layoutBox addChild:timeLbl];
     
     _totalTimeLbl = [[CCLabelTTF alloc] initWithAttributedString:
-                     [[NSAttributedString alloc] initWithString:@"0" attributes:attrsDictionary]
+                     [[NSAttributedString alloc] initWithString:[NSString
+                                                                 stringWithFormat:@"%lu",(unsigned long)_metresTraveled]
+                                                     attributes:attrsDictionary]
                      ];
     [_layoutBox addChild:_totalTimeLbl];
     [self addChild:_layoutBox];
@@ -295,7 +304,7 @@ static const BOOL DEBUG_MODE = FALSE;
     
     [_obstacleFactory updateObstacles];
     _totalTime += delta;
-    NSInteger metresTraveled = (NSInteger) roundf((_totalTime * 100)  / _shark.contentSize.width );
+    NSInteger metresTraveled = (NSInteger) roundf((_totalTime * (_scrollSpeed / 2))  / _shark.contentSize.width );
     
     // Update the meters travelled only whne it has actually changed, this is
     // to stop drawing on the screen to regularly.
@@ -407,6 +416,10 @@ static const BOOL DEBUG_MODE = FALSE;
     // a coint.  It will be up to the transition manager to decide what happens
     // in terms of benefit for hitting a coin.
     
+    SceneManager *scnMgr  = [SceneManager instance];
+    scnMgr.points         = _score;
+    scnMgr.totalTime      = _totalTime;
+    scnMgr.metresTraveled = _metresTraveled;
 
     
     return TRUE;

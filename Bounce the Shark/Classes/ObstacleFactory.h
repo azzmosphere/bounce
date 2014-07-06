@@ -38,10 +38,6 @@
 @property (nonatomic, assign) CCScene *gameScene;
 
 
-//-(id) initWith :(CCPhysicsNode *) physicsNode
-//           ctl :(CCNode *) ctl;
-
-
 // METHODS
 //-(void) spawnNewObstacle;
 -(void) updateObstacles;

@@ -10,8 +10,6 @@
 
 @implementation HeroDiedScene {
     CCLayoutBox *_layoutBox;
-    CCButton    *_continue;
-    CCButton    *_restart;
 }
 
 /*
@@ -39,8 +37,8 @@
     [_layoutBox setAnchorPoint:CGPointZero];
     
     //Create buttons
-    _continue = [self createButtonWithTitle:@"continiue"];
-    _restart  = [self createButtonWithTitle:@"restart"];
+    [self createButtonWithTitle:@"continue" andSelector:@"continue:"];
+    [self createButtonWithTitle:@"restart"  andSelector:@"restart:" ];
 
     CGSize cs = [[CCDirector sharedDirector] viewSize];
     cs.width  = cs.width  / 2 - _layoutBox.contentSize.width /2;
@@ -68,6 +66,7 @@
  *==============================================================================
  */
 -(CCButton *) createButtonWithTitle :(NSString *) title
+                        andSelector :(NSString *) selector
 {
     CCButton *button = [[CCButton alloc] initWithTitle:title
                                        fontName:@"Arial"
@@ -77,19 +76,33 @@
     
     // Attach the selector to the button, this will delegate back to the
     // scene
-    [button setTarget:self selector:@selector(title)];
+    
+    SEL sel =  NSSelectorFromString(selector);
+    [button setTarget:self selector:sel];
     
     return button;
 }
 
+/*
+ *==============================================================================
+ * Restart button clicked.
+ *==============================================================================
+ */
 -(void) restart: (id) sender
 {
     NSLog(@"Restart button has been pressed");
+    [[SceneManager instance] changeScene: BTSMainGameIntroScene];
 }
 
+/*
+ *==============================================================================
+ * Continue button clic clicked.
+ *==============================================================================
+ */
 -(void) continue: (id) sender
 {
     NSLog(@"Continue button has been pressed");
+    [[SceneManager instance] changeScene: BTSMainGameContinue];
 }
 
 @end

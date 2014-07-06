@@ -10,16 +10,29 @@
 #import "HeroDiedScene.h"
 #import "CCNode.h"
 
+@class MainGamePlay;
+
 #define BTSMainGameIntroScene 0
 #define BTSMainGamePlayScene  1
 #define BTSHeroDiedScene      2
+#define BTSMainGameContinue   3
 
-#define SCROLL_SPEED 80.f
+#define SCROLL_SPEED     80.f
+#define SCROLL_SPEED_INC 40.f
 
 @interface SceneManager : CCNode
+
+@property (nonatomic, assign) CGFloat    scrollSpeed;
+@property (nonatomic, assign) NSUInteger level;
+@property (nonatomic, assign) NSUInteger points;
+@property (nonatomic, assign) CGFloat    totalTime;
+@property (nonatomic, assign) NSUInteger metresTraveled;
+
 
 + (SceneManager *)instance;
 -(CCScene *)      getScene    : (NSUInteger) scene;
 -(void)           changeScene : (NSUInteger) scene;
+-(void)           resetDefaults;
+
 
 @end

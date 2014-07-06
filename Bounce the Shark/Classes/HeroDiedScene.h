@@ -10,6 +10,7 @@
 #import "CCButton.h"
 #import "CCLayoutBox.h"
 #import "CCDirector.h"
+#import "SceneManager.h"
 #import "CCScene.h"
 
 @interface HeroDiedScene : CCScene
@@ -17,5 +18,8 @@
 
 +(HeroDiedScene *)scene;
 -(id)             init;
+
+-(void) restart: (id) sender;
+-(void) continue: (id) sender;
 
 @end

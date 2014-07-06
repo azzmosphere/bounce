@@ -13,6 +13,12 @@
 
 static SceneManager *sceneMgr;
 
+@synthesize scrollSpeed    = scrollSpeed;
+@synthesize level          = level;
+@synthesize points         = points;
+@synthesize totalTime      = totalTime;
+@synthesize metresTraveled = metresTraveled;
+
 /*
  *==============================================================================
  * Class constructor,  creates a singleton reference of the class.
@@ -24,14 +30,35 @@ static SceneManager *sceneMgr;
     {
         if (sceneMgr == NULL){
             sceneMgr = [[self alloc] init];
-            
-            // Set the defaults
-            //sceneMgr._level  = 1;
-            //sceneMgr._scroll_speed = SPEED_DELTA;
         }
     }
     
     return sceneMgr;
+}
+
+/*
+ *==============================================================================
+ * Class constructor,
+ *==============================================================================
+ */
+-(id) init
+{
+    self = [super init];
+    if(self == nil)
+        return self;
+    [self resetDefaults];
+
+    return self;
+}
+
+
+-(void) resetDefaults
+{
+    points      = 0;
+    level       = 1;
+    totalTime   = 0;
+    scrollSpeed = SCROLL_SPEED;
+    
 }
 
 /*
@@ -41,17 +68,22 @@ static SceneManager *sceneMgr;
  */
 -(CCScene *) getScene : (NSUInteger) scene
 {
-    CCScene *trnScene;
+    CCScene      *trnScene;
     switch(scene){
         case BTSMainGameIntroScene:
-            trnScene = [MainGamePlay scene : SCROLL_SPEED];
+            trnScene = [MainGamePlay scene : scrollSpeed];
             break;
         case BTSMainGamePlayScene:
-            trnScene = [MainGamePlay scene : SCROLL_SPEED];
+            [self resetDefaults];
+            trnScene = [MainGamePlay scene : scrollSpeed];
             break;
         case BTSHeroDiedScene:
             trnScene = [HeroDiedScene scene];
             break;
+        case BTSMainGameContinue:
+            trnScene = [MainGamePlay scene : scrollSpeed];
+            break;
+            
     }
     return trnScene;
 }

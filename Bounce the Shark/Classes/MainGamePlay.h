@@ -18,7 +18,12 @@
 
 @interface MainGamePlay : CCScene <CCPhysicsCollisionDelegate>
 
--(id)           init   : (CGFloat) scrollSpeed;
-+(MainGamePlay *)scene : (CGFloat) scrollSpeed;
+@property (nonatomic, assign) CCTime     _totalTime;
+@property (nonatomic, assign) CGFloat    _scrollSpeed;
+@property (nonatomic, assign) NSUInteger _metresTraveled;
+
+-(void)         initDisplayBoard;
+-(id)           init             : (CGFloat) scrollSpeed;
++(MainGamePlay *)scene           : (CGFloat) scrollSpeed;
 
 @end
