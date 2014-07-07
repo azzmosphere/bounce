@@ -24,6 +24,9 @@
 		236442EC195717180038C996 /* coral-2-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 236442E9195717180038C996 /* coral-2-ipad.png */; };
 		236442ED195717180038C996 /* coral-2-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 236442EA195717180038C996 /* coral-2-ipadhd.png */; };
 		236442EE195717180038C996 /* coral-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 236442EB195717180038C996 /* coral-2.png */; };
+		237B0F3F1968F0C5002156DD /* ScoreBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 237B0F3E1968F0C5002156DD /* ScoreBoard.m */; };
+		237B0F421968F237002156DD /* DecisionScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 237B0F411968F237002156DD /* DecisionScene.m */; };
+		237B0F451969895E002156DD /* ScorePersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = 237B0F441969895E002156DD /* ScorePersistence.m */; };
 		238D144C19582A82004AA6BD /* hook-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = 238D144619582A82004AA6BD /* hook-ipad.plist */; };
 		238D144D19582A82004AA6BD /* hook-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 238D144719582A82004AA6BD /* hook-ipad.png */; };
 		238D144E19582A82004AA6BD /* hook-ipadhd.plist in Resources */ = {isa = PBXBuildFile; fileRef = 238D144819582A82004AA6BD /* hook-ipadhd.plist */; };
@@ -276,6 +279,12 @@
 		236442E9195717180038C996 /* coral-2-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coral-2-ipad.png"; sourceTree = "<group>"; };
 		236442EA195717180038C996 /* coral-2-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coral-2-ipadhd.png"; sourceTree = "<group>"; };
 		236442EB195717180038C996 /* coral-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coral-2.png"; sourceTree = "<group>"; };
+		237B0F3D1968F0C5002156DD /* ScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreBoard.h; path = Classes/ScoreBoard.h; sourceTree = "<group>"; };
+		237B0F3E1968F0C5002156DD /* ScoreBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreBoard.m; path = Classes/ScoreBoard.m; sourceTree = "<group>"; };
+		237B0F401968F237002156DD /* DecisionScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecisionScene.h; path = Classes/DecisionScene.h; sourceTree = "<group>"; };
+		237B0F411968F237002156DD /* DecisionScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DecisionScene.m; path = Classes/DecisionScene.m; sourceTree = "<group>"; };
+		237B0F431969895E002156DD /* ScorePersistence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScorePersistence.h; path = Classes/ScorePersistence.h; sourceTree = "<group>"; };
+		237B0F441969895E002156DD /* ScorePersistence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScorePersistence.m; path = Classes/ScorePersistence.m; sourceTree = "<group>"; };
 		238D144619582A82004AA6BD /* hook-ipad.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "hook-ipad.plist"; path = "Resources/hook-ipad.plist"; sourceTree = "<group>"; };
 		238D144719582A82004AA6BD /* hook-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hook-ipad.png"; path = "Resources/hook-ipad.png"; sourceTree = "<group>"; };
 		238D144819582A82004AA6BD /* hook-ipadhd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "hook-ipadhd.plist"; path = "Resources/hook-ipadhd.plist"; sourceTree = "<group>"; };
@@ -1651,6 +1660,12 @@
 				234F58751960CB1900947570 /* SceneManager.m */,
 				23A1708D1962258900542AE1 /* HeroDiedScene.h */,
 				23A1708E1962258900542AE1 /* HeroDiedScene.m */,
+				237B0F3D1968F0C5002156DD /* ScoreBoard.h */,
+				237B0F3E1968F0C5002156DD /* ScoreBoard.m */,
+				237B0F401968F237002156DD /* DecisionScene.h */,
+				237B0F411968F237002156DD /* DecisionScene.m */,
+				237B0F431969895E002156DD /* ScorePersistence.h */,
+				237B0F441969895E002156DD /* ScorePersistence.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1780,6 +1795,7 @@
 				23E2AD611951968700B88DFD /* CCParticleBatchNode.m in Sources */,
 				23E2AED91951968900B88DFD /* CCBReader.m in Sources */,
 				23E2AE891951968800B88DFD /* CCButton.m in Sources */,
+				237B0F421968F237002156DD /* DecisionScene.m in Sources */,
 				23E2AE341951968800B88DFD /* OALAudioActions.m in Sources */,
 				23E2AE791951968800B88DFD /* NSMutableArray+WeakReferences.m in Sources */,
 				23E2ADF31951968800B88DFD /* CCGLView.m in Sources */,
@@ -1856,6 +1872,7 @@
 				2317C3EB1955B8DC00D16093 /* ObstacleFactory.m in Sources */,
 				23E2AE6B1951968800B88DFD /* OALAudioSession.m in Sources */,
 				23E2AEE21951968900B88DFD /* CCBLocalizationManager.m in Sources */,
+				237B0F3F1968F0C5002156DD /* ScoreBoard.m in Sources */,
 				23E2ADCE1951968700B88DFD /* CCTiledMapObjectGroup.m in Sources */,
 				23E2AECB1951968900B88DFD /* vec3.c in Sources */,
 				23E2AD4E1951968700B88DFD /* CCLayoutBox.m in Sources */,
@@ -1909,6 +1926,7 @@
 				23E2AEC71951968900B88DFD /* utility.c in Sources */,
 				23E2AE261951968800B88DFD /* ZipUtils.m in Sources */,
 				23E2AE371951968800B88DFD /* OALUtilityActions.m in Sources */,
+				237B0F451969895E002156DD /* ScorePersistence.m in Sources */,
 				23E2ADE21951968800B88DFD /* CCES2Renderer.m in Sources */,
 				23E2AEB21951968800B88DFD /* aabb.c in Sources */,
 				23E2AEDC1951968900B88DFD /* CCBsequence.m in Sources */,

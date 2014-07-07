@@ -13,11 +13,10 @@
 #import "SceneManager.h"
 #import "CCScene.h"
 
-@interface HeroDiedScene : CCScene
+#import "DecisionScene.h"
 
+@interface HeroDiedScene : DecisionScene
 
-+(HeroDiedScene *)scene;
--(id)             init;
 
 -(void) restart: (id) sender;
 -(void) continue: (id) sender;

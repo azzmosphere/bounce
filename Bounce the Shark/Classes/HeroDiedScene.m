@@ -8,9 +8,7 @@
 
 #import "HeroDiedScene.h"
 
-@implementation HeroDiedScene {
-    CCLayoutBox *_layoutBox;
-}
+@implementation HeroDiedScene
 
 /*
  *==============================================================================
@@ -24,64 +22,22 @@
     if( self == nil )
         return self;
     
-    self.userInteractionEnabled = TRUE;
-    
-    // Create the background.
-    CCScene *scene = [CCSprite spriteWithImageNamed:@"ocean.png"];
-    [scene setAnchorPoint:CGPointZero];
-    [self addChild:scene];
-
-    // Create layoutbox for background.
-    _layoutBox = [[CCLayoutBox alloc] init];
-    _layoutBox.direction = CCLayoutBoxDirectionVertical;
-    [_layoutBox setAnchorPoint:CGPointZero];
-    
     //Create buttons
     [self createButtonWithTitle:@"continue" andSelector:@"continue:"];
     [self createButtonWithTitle:@"restart"  andSelector:@"restart:" ];
+    [self createButtonWithTitle:@"score"    andSelector:@"score:"];
 
     CGSize cs = [[CCDirector sharedDirector] viewSize];
-    cs.width  = cs.width  / 2 - _layoutBox.contentSize.width /2;
-    cs.height = cs.height / 2 - _layoutBox.contentSize.height / 2;
+    cs.width  = cs.width  / 2 - self._layoutBox.contentSize.width /2;
+    cs.height = cs.height / 2 - self._layoutBox.contentSize.height / 2;
     
-    _layoutBox.position = ccp(cs.width,cs.height);
-    [self addChild:_layoutBox];
+    self._layoutBox.position = ccp(cs.width,cs.height);
+    [self addChild:self._layoutBox];
     
     return self;
 }
 
-/*
- *==============================================================================
- * Create a instance of the scene
- *==============================================================================
- */
-+ (HeroDiedScene *)scene
-{
-    return [[self alloc] init];
-}
 
-/*
- *==============================================================================
- * Create a button object and attache it to the layout body.
- *==============================================================================
- */
--(CCButton *) createButtonWithTitle :(NSString *) title
-                        andSelector :(NSString *) selector
-{
-    CCButton *button = [[CCButton alloc] initWithTitle:title
-                                       fontName:@"Arial"
-                                       fontSize:14];
-    [button setAnchorPoint:CGPointZero];
-    [_layoutBox addChild:button];
-    
-    // Attach the selector to the button, this will delegate back to the
-    // scene
-    
-    SEL sel =  NSSelectorFromString(selector);
-    [button setTarget:self selector:sel];
-    
-    return button;
-}
 
 /*
  *==============================================================================
@@ -96,13 +52,24 @@
 
 /*
  *==============================================================================
- * Continue button clic clicked.
+ * Continue button clicked.
  *==============================================================================
  */
 -(void) continue: (id) sender
 {
     NSLog(@"Continue button has been pressed");
     [[SceneManager instance] changeScene: BTSMainGameContinue];
+}
+
+/*
+ *==============================================================================
+ * Score button clicked.
+ *==============================================================================
+ */
+-(void) score: (id) sender
+{
+    NSLog(@"Score button has been pressed");
+    [[SceneManager instance] changeScene: BTSScoreBoard];
 }
 
 @end

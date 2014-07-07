@@ -8,6 +8,7 @@
 
 #import "MainGamePlay.h"
 #import "HeroDiedScene.h"
+#import "ScoreBoard.h"
 #import "CCNode.h"
 
 @class MainGamePlay;
@@ -16,6 +17,7 @@
 #define BTSMainGamePlayScene  1
 #define BTSHeroDiedScene      2
 #define BTSMainGameContinue   3
+#define BTSScoreBoard         4
 
 #define SCROLL_SPEED     80.f
 #define SCROLL_SPEED_INC 40.f

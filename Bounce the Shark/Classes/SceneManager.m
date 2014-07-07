@@ -71,6 +71,7 @@ static SceneManager *sceneMgr;
     CCScene      *trnScene;
     switch(scene){
         case BTSMainGameIntroScene:
+            [self resetDefaults];
             trnScene = [MainGamePlay scene : scrollSpeed];
             break;
         case BTSMainGamePlayScene:
@@ -82,6 +83,9 @@ static SceneManager *sceneMgr;
             break;
         case BTSMainGameContinue:
             trnScene = [MainGamePlay scene : scrollSpeed];
+            break;
+        case BTSScoreBoard:
+            trnScene = [ScoreBoard scene];
             break;
             
     }
