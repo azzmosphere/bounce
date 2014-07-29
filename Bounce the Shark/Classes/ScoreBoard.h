@@ -9,6 +9,7 @@
 #import "CCDirector.h"
 #import "SceneManager.h"
 #import "ScorePersistence.h"
+#import "CCScrollView.h"
 #import "DecisionScene.h"
 
 @interface ScoreBoard : DecisionScene

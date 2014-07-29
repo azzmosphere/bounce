@@ -12,4 +12,8 @@
 
 -(id) init;
 
+-(void) writeToPresistence : (NSUInteger) level
+                 withScore : (NSUInteger) points
+             withTotalTime : (CGFloat) totalTime
+        withMetresTraveled : (NSUInteger) metresTraveled;
 @end

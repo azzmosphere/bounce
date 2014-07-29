@@ -19,7 +19,7 @@
 #define BTSMainGameContinue   3
 #define BTSScoreBoard         4
 
-#define SCROLL_SPEED     80.f
+#define SCROLL_SPEED     200.f
 #define SCROLL_SPEED_INC 40.f
 
 @interface SceneManager : CCNode

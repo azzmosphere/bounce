@@ -11,7 +11,7 @@
 @implementation SharkHero
 
 const static CGFloat SHARK_X_PULSE       = 0.0f;
-const static CGFloat SHARK_IMPULSE_SPEED = 150.0f;
+const static CGFloat SHARK_IMPULSE_SPEED = 800.0f;
 const static int     FRAMES              = 3;
 const static CGFloat RECT_OFFSET         = 0.2f;
 const static CGFloat RECT_OFFSET2        = 0.1f;

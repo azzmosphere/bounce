@@ -9,7 +9,8 @@
 #import "ScoreBoard.h"
 
 @implementation ScoreBoard {
-    CCLayoutBox *_scorboard;
+    CCScrollView     *_scoreboard;
+    ScorePersistence *_scores;
 }
 
 -(id) init
@@ -29,10 +30,10 @@
     self._layoutBox.position = ccp(cs.width,cs.height);
     [self addChild:self._layoutBox];
     
-    // Get latest score and add it to persistence class
-    _scorboard = [[CCLayoutBox alloc] init];
+    _scoreboard = [[CCScrollView alloc] init];
+    _scoreboard.userInteractionEnabled = TRUE;
     
-    [self addChild:_scorboard];
+    _scores     = [[ScorePersistence alloc] init];
     
     return self;
 }
@@ -47,7 +48,29 @@
 -(void) restart: (id) sender
 {
     NSLog(@"Restart button has been pressed");
-    [[SceneManager instance] changeScene: BTSMainGameIntroScene];
+    SceneManager* scnMgr = [SceneManager instance];
+    [scnMgr changeScene: BTSMainGameIntroScene];
+}
+
+/*
+ *==============================================================================
+ * Add scores
+ *==============================================================================
+ */
+-(void) addScore
+{
+    
+}
+
+
+/*
+ *==============================================================================
+ * Display scores
+ *==============================================================================
+ */
+-(void) displayScores
+{
+    
 }
 
 @end

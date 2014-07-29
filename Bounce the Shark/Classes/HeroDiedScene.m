@@ -8,7 +8,9 @@
 
 #import "HeroDiedScene.h"
 
-@implementation HeroDiedScene
+@implementation HeroDiedScene {
+    ScorePersistence *persist;
+}
 
 /*
  *==============================================================================
@@ -34,6 +36,8 @@
     self._layoutBox.position = ccp(cs.width,cs.height);
     [self addChild:self._layoutBox];
     
+    persist = [[ScorePersistence alloc] init];
+    
     return self;
 }
 
@@ -47,7 +51,12 @@
 -(void) restart: (id) sender
 {
     NSLog(@"Restart button has been pressed");
-    [[SceneManager instance] changeScene: BTSMainGameIntroScene];
+    SceneManager *scnMgr = [SceneManager instance];
+    [persist writeToPresistence:scnMgr.level
+                      withScore:scnMgr.points
+                  withTotalTime:scnMgr.totalTime
+             withMetresTraveled:scnMgr.metresTraveled];
+    [ scnMgr changeScene: BTSMainGameIntroScene];
 }
 
 /*
@@ -69,7 +78,12 @@
 -(void) score: (id) sender
 {
     NSLog(@"Score button has been pressed");
-    [[SceneManager instance] changeScene: BTSScoreBoard];
+    SceneManager *scnMgr = [SceneManager instance];
+    [persist writeToPresistence:scnMgr.level
+                      withScore:scnMgr.points
+                  withTotalTime:scnMgr.totalTime
+             withMetresTraveled:scnMgr.metresTraveled];
+    [ scnMgr changeScene: BTSScoreBoard];
 }
 
 @end

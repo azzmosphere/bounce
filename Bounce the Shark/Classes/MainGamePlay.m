@@ -96,7 +96,7 @@ static const BOOL DEBUG_MODE = FALSE;
     _shark.position = ccp(viewSize.width * 0.2f, viewSize.height/2);
     
     
-    _physicsWorld.gravity = ccp(0,-50);
+    _physicsWorld.gravity = ccp(0,-800);
     
     
     _heroOrigPos = [_physicsWorld convertToWorldSpace: _shark.position];
